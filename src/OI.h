@@ -12,7 +12,6 @@ public:
 	OI();
 	//Right JoyStick
 	Joystick* getDriveStickR();
-
 	//Left Joystick
 	Joystick* getDriveStickL();
 };
