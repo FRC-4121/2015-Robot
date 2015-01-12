@@ -34,5 +34,6 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//true precision drive
 	//false standard drive
 
-	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX());
+	//robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX());
+	robotDrive->MecanumDrive_Polar(stickR->GetX(),stickR->GetY(), stickL->GetX());
 }
