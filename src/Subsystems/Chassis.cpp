@@ -36,8 +36,8 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//false standard drive
 	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), ( kP * gyro->GetAngle());
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
-	SmartDashboard.putNumber(gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
-	SmartDashboard.putNumber(accel->getX()); //
-	SmartDashboard.putNumber(accel->getY()); // Sends internal acceleratomer levels to the smartdashboard
-	Smartdashboard.putNumber(accel->getZ()); //
+	SmartDashboard.putNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
+	SmartDashboard.putNumber("Accelerometer - X axis", accel->getX()); //
+	SmartDashboard.putNumber("Accelerometer - Y axis", accel->getY()); // Sends internal acceleratomer levels to the smartdashboard
+	Smartdashboard.putNumber("Accelerometer - Z axis", accel->getZ()); //
 }
