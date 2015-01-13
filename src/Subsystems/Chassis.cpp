@@ -2,6 +2,7 @@
 #include "../RobotMap.h"
 #include "RobotDrive.h"
 #include "../Commands/DriveWithJoysticks.h"
+#include "../WPILib.h"
 
 Chassis::Chassis() : Subsystem("Chassis"){
 	frontLeftTalon = new Talon(FRONT_LEFT_TALON);
@@ -10,9 +11,11 @@ Chassis::Chassis() : Subsystem("Chassis"){
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
 	gyro = new Gyro(1); // Adds the gyro
+	Accelerometer *accel;
 	accel = BuiltInAccelerometer(Accelerometer:kRange_4G); // Creates the internal accelerometer class
-	static const float kP = 0.03;
-	// driveStyle = "";
+	double xVal = accel->GetX();
+	double yVal = accel->GetY();
+	double zVal = accel->GetZ();
 }
 
 void Chassis::InitDefaultCommand(){
@@ -37,7 +40,7 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), ( kP * gyro->GetAngle());
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 	SmartDashboard.putNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
-	SmartDashboard.putNumber("Accelerometer - X axis", accel->getX()); //
-	SmartDashboard.putNumber("Accelerometer - Y axis", accel->getY()); // Sends internal acceleratomer levels to the smartdashboard
-	Smartdashboard.putNumber("Accelerometer - Z axis", accel->getZ()); //
+	SmartDashboard.putNumber("Accelerometer - X axis", xVal); //
+	SmartDashboard.putNumber("Accelerometer - Y axis", yVal); // Sends internal acceleratomer levels to the smartdashboard
+	Smartdashboard.putNumber("Accelerometer - Z axis", zVal); //
 }
