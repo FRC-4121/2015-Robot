@@ -2,7 +2,6 @@
 #include "../RobotMap.h"
 #include "RobotDrive.h"
 #include "../Commands/DriveWithJoysticks.h"
-#include "../WPILib.h"
 
 Chassis::Chassis() : Subsystem("Chassis"){
 	frontLeftTalon = new Talon(FRONT_LEFT_TALON);
@@ -12,7 +11,7 @@ Chassis::Chassis() : Subsystem("Chassis"){
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
 	gyro = new Gyro(1); // Adds the gyro
 	Accelerometer *accel;
-	accel = BuiltInAccelerometer(Accelerometer:kRange_4G); // Creates the internal accelerometer class
+	accel = BuiltInAccelerometer(Accelerometer::kRange_4G); // Creates the internal accelerometer class
 	double xVal = accel->GetX();
 	double yVal = accel->GetY();
 	double zVal = accel->GetZ();
@@ -21,9 +20,12 @@ Chassis::Chassis() : Subsystem("Chassis"){
 void Chassis::InitDefaultCommand(){
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-
 	gyro->SetSensitivity(.007);
 	gyro->Reset(); // Resets the gyro's heading
+	SmartDashboard::putNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
+	SmartDashboard::putNumber("Accelerometer - X axis", xVal); //
+	SmartDashboard::putNumber("Accelerometer - Y axis", yVal); // Sends internal acceleratomer levels to the smartdashboard
+	Smartdashboard::putNumber("Accelerometer - Z axis", zVal); //
 	SetDefaultCommand(new DriveWithJoysticks());
 }
 
@@ -39,8 +41,4 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//false standard drive
 	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), ( kP * gyro->GetAngle());
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
-	SmartDashboard.putNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
-	SmartDashboard.putNumber("Accelerometer - X axis", xVal); //
-	SmartDashboard.putNumber("Accelerometer - Y axis", yVal); // Sends internal acceleratomer levels to the smartdashboard
-	Smartdashboard.putNumber("Accelerometer - Z axis", zVal); //
 }
