@@ -12,6 +12,7 @@ Chassis::Chassis() :
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
+	DriveState=true;
 }
 
 void Chassis::InitDefaultCommand()
@@ -35,4 +36,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//false standard drive
 
 	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX());
+}
+void Chassis::ToggleDrive()
+{
+		DriveState = !DriveState;
+	//true mecanum drive
+	//false tank drive
+}
 }
