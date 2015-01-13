@@ -41,6 +41,6 @@ void Chassis::ToggleDrive()
 {
 		DriveState = !DriveState;
 	//true mecanum drive
-	//false tank drive
+	//false cartesian drive
 }
 }
