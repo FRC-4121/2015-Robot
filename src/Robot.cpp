@@ -12,7 +12,7 @@ private:
 	void RobotInit()
 	{
 		CommandBase::init();
-		autonomousCommand = new ExampleCommand();
+		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 	}
 	

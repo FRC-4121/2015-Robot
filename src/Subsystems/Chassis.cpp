@@ -11,7 +11,11 @@ Chassis::Chassis() :
 	rearLeftTalon = new Talon(REAR_LEFT_TALON);
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 
+
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
+	gyro = new Gyro(1);
+
+
 }
 
 void Chassis::InitDefaultCommand()
@@ -19,6 +23,10 @@ void Chassis::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 
+	gyro->SetSensitivity(.007);
+
+
+	gyro->Reset();
 	SetDefaultCommand(new DriveWithJoysticks());
 
 }
@@ -34,6 +42,6 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//true precision drive
 	//false standard drive
 
-	//robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX());
-	robotDrive->MecanumDrive_Polar(stickR->GetX(),stickR->GetY(), stickL->GetX());
+	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+//	robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 }

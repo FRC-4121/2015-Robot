@@ -9,8 +9,9 @@ class Chassis: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	RobotDrive *robotDrive;
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
+	RobotDrive *robotDrive;
+	Gyro *gyro;
 
 public:
 	Chassis();
