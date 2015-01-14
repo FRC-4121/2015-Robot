@@ -17,7 +17,12 @@ void Chassis::InitDefaultCommand(){
 	//SetDefaultCommand(new MySpecialCommand());
 	gyro->SetSensitivity(.007);
 	gyro->Reset(); // Resets the gyro's heading
+	Accelerometer *accel;
+	accel = new BuiltInAccelerometer(Accelerometer::kRange_4G);
 	SmartDashboard::PutNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
+	SmartDashboard::PutNumber("Accelerometer - X axis", accel->GetX()); //
+	SmartDashboard::PutNumber("Accelerometer - Y axis", accel->GetY()); // Sends internal acceleratomer levels to the smartdashboard
+	SmartDashboard::PutNumber("Accelerometer - Z axis", accel->GetZ()); //
 	SetDefaultCommand(new DriveWithJoysticks());
 }
 
