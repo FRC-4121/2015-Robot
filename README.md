@@ -1,9 +1,8 @@
 # The Robot
-The programing side of our robot for the 2015 FRC game, Recycle Rush. Built using C++.
+This is our code for the 2015 season, written in C++.
 
 ## Features
-* Compiles (possibly)
+* Compiles
+* Different drivestyles
+* Mecanum based driving
 * Command based framework
-
-## Currently Planned Features
-* Mecanuem drive system
