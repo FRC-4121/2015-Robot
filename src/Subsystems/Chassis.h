@@ -11,13 +11,11 @@ private:
 	// for methods that implement subsystem capabilities
 	RobotDrive *robotDrive;
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
-	bool DriveState;
 
 public:
 	Chassis();
 	void InitDefaultCommand();
 	void DriveWithJoystick(Joystick *stickL, Joystick *stickR);
-	void Chassis::ToggleDrive();
 };
 
 #endif
