@@ -10,6 +10,9 @@ Chassis::Chassis() : Subsystem("Chassis"){
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
 	gyro = new Gyro(1); // Adds the gyro
+	CartesianDriveState==true;
+	MecanumPolarDriveState==true;
+	TankDriveState==true;
 }
 
 void Chassis::InitDefaultCommand(){
@@ -39,3 +42,37 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 }
+void Chassis::ToggleDrive()
+{
+	if (CartesianDriveState==true)
+	{
+	CartesianDriveState = !CartesianDriveState;
+	
+	//!!!!I don't know magnitude direction or rotation values that need to go here!!!!!!
+	robotDrive->MecanumDrive_Polar(	float magnitude, float direction,float rotation) 
+
+	}
+	else if(MecanumPolarDriveState==true)
+	{
+	MecanumDriveState=!MecanumDriveState;
+	robotDrive->TankDrive(oi->getDriveStickL(), oi->getDriveStickR());
+
+	//reset the tank drive to true
+	TankDriveState=true;
+	}
+	else if(TankDriveState==true)
+	{
+        TankDriveState=!TankDriveState;
+        
+        robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+        
+        //reset the cartesian and mecanum drive states to true
+        CartesianDriveState = true;
+        MecanumDriveState=true;
+	}
+	
+
+}
+
+
+
