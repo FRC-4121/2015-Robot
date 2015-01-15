@@ -2,31 +2,34 @@
 #include "../RobotMap.h"
 #include "RobotDrive.h"
 #include "../Commands/DriveWithJoysticks.h"
+#include "../Commands/toggleDriveStyleCommand.h"
 
-Chassis::Chassis() : Subsystem("Chassis"){
+Chassis::Chassis() :
+		Subsystem("Chassis")
+{
 	frontLeftTalon = new Talon(FRONT_LEFT_TALON);
 	frontRightTalon = new Talon(FRONT_RIGHT_TALON);
 	rearLeftTalon = new Talon(REAR_LEFT_TALON);
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
+
+
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
-	gyro = new Gyro(1); // Adds the gyro
-	CartesianDriveState==true;
-	MecanumPolarDriveState==true;
-	TankDriveState==true;
+	gyro = new Gyro(1);
+
+
 }
 
-void Chassis::InitDefaultCommand(){
+void Chassis::InitDefaultCommand()
+{
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+
 	gyro->SetSensitivity(.007);
-	gyro->Reset(); // Resets the gyro's heading
-	Accelerometer *accel;
-	accel = new BuiltInAccelerometer(Accelerometer::kRange_4G);
-	SmartDashboard::PutNumber("Heading - Gyro", gyro->GetAngle()); // Pushes the gyro angle to the smartdashboard
-	SmartDashboard::PutNumber("Accelerometer - X axis", accel->GetX()); //
-	SmartDashboard::PutNumber("Accelerometer - Y axis", accel->GetY()); // Sends internal acceleratomer levels to the smartdashboard
-	SmartDashboard::PutNumber("Accelerometer - Z axis", accel->GetZ()); //
+
+
+	gyro->Reset();
 	SetDefaultCommand(new DriveWithJoysticks());
+
 }
 
 // Put methods for controlling this subsystem
@@ -39,40 +42,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 
 	//true precision drive
 	//false standard drive
-	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
-	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
+
+	if(toggleDriveStyleCommand::DriveStyle = "Cartesian"){
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+	} else if(toggleDriveStyleCommand::DriveStyle = "Tank") {
+		// Tank Drive
+	}
+//	robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 }
-void Chassis::ToggleDrive()
-{
-	if (CartesianDriveState==true)
-	{
-	CartesianDriveState = !CartesianDriveState;
-	
-	//!!!!I don't know magnitude direction or rotation values that need to go here!!!!!!
-	robotDrive->MecanumDrive_Polar(	float magnitude, float direction,float rotation) 
-
-	}
-	else if(MecanumPolarDriveState==true)
-	{
-	MecanumDriveState=!MecanumDriveState;
-	robotDrive->TankDrive(oi->getDriveStickL(), oi->getDriveStickR());
-
-	//reset the tank drive to true
-	TankDriveState=true;
-	}
-	else if(TankDriveState==true)
-	{
-        TankDriveState=!TankDriveState;
-        
-        robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
-        
-        //reset the cartesian and mecanum drive states to true
-        CartesianDriveState = true;
-        MecanumDriveState=true;
-	}
-	
-
-}
-
-
-
