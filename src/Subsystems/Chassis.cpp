@@ -14,9 +14,13 @@ Chassis::Chassis() :
 
 
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
+<<<<<<< HEAD
 	gyro = new Gyro(1);
 
 
+=======
+	gyro = new Gyro(1); // Adds the gyro
+>>>>>>> parent of cf5d25c... Update Chassis.cpp
 }
 
 void Chassis::InitDefaultCommand()
@@ -42,6 +46,7 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 
 	//true precision drive
 	//false standard drive
+<<<<<<< HEAD
 
 	if(toggleDriveStyleCommand::DriveStyle = "Cartesian"){
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
@@ -49,4 +54,8 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 		// Tank Drive
 	}
 //	robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
+=======
+	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
+>>>>>>> parent of cf5d25c... Update Chassis.cpp
 }
