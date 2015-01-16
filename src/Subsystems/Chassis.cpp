@@ -2,38 +2,27 @@
 #include "../RobotMap.h"
 #include "RobotDrive.h"
 #include "../Commands/DriveWithJoysticks.h"
-#include "../Commands/toggleDriveStyleCommand.h"
 
-Chassis::Chassis() :
-		Subsystem("Chassis")
-{
+Chassis::Chassis() : Subsystem("Chassis"){
 	frontLeftTalon = new Talon(FRONT_LEFT_TALON);
 	frontRightTalon = new Talon(FRONT_RIGHT_TALON);
 	rearLeftTalon = new Talon(REAR_LEFT_TALON);
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
-
-
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
-<<<<<<< HEAD
-	gyro = new Gyro(1);
-
-
-=======
 	gyro = new Gyro(1); // Adds the gyro
->>>>>>> parent of cf5d25c... Update Chassis.cpp
-}
-
-void Chassis::InitDefaultCommand()
-{
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	CartesianDriveState = true;
+	MecanumPolarDriveState = true;
+	TankDriveState = true;
 
 	gyro->SetSensitivity(.007);
+	gyro->Reset(); // Resets the gyro's heading
 
+	accel = new BuiltInAccelerometer();
+}
 
-	gyro->Reset();
+void Chassis::InitDefaultCommand(){
+
 	SetDefaultCommand(new DriveWithJoysticks());
-
 }
 
 // Put methods for controlling this subsystem
@@ -46,16 +35,21 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 
 	//true precision drive
 	//false standard drive
-<<<<<<< HEAD
-
-	if(toggleDriveStyleCommand::DriveStyle = "Cartesian"){
+	if (TankDriveState)
+	{
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
-	} else if(toggleDriveStyleCommand::DriveStyle = "Tank") {
-		// Tank Drive
 	}
-//	robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
-=======
-	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+	else
+	{
+		robotDrive->TankDrive(stickL, stickR, FALSE);
+	}
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
->>>>>>> parent of cf5d25c... Update Chassis.cpp
 }
+void Chassis::ToggleDrive()
+{
+	if(TankDriveState==true)
+	{
+        TankDriveState=!TankDriveState;
+	}
+}
+

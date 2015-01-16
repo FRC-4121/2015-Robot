@@ -12,11 +12,14 @@ private:
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
 	Gyro *gyro;
+	bool CartesianDriveState, MecanumPolarDriveState, TankDriveState;
+	Accelerometer *accel;
 
 public:
 	Chassis();
 	void InitDefaultCommand();
 	void DriveWithJoystick(Joystick *stickL, Joystick *stickR);
+	void ToggleDrive();
 };
 
 #endif
