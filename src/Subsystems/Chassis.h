@@ -12,8 +12,9 @@ private:
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
 	Gyro *gyro;
-	bool CartesianDriveState, MecanumPolarDriveState, TankDriveState;
+	bool TankDriveState;
 	Accelerometer *accel;
+
 
 public:
 	Chassis();

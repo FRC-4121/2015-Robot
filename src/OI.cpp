@@ -6,6 +6,7 @@ OI::OI()
 	// Process operator interface input here.
 	//Right Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
+	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
 
 	//Left Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);

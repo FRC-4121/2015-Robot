@@ -10,8 +10,8 @@ Chassis::Chassis() : Subsystem("Chassis"){
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
 	gyro = new Gyro(1); // Adds the gyro
-	CartesianDriveState = true;
-	MecanumPolarDriveState = true;
+
+
 	TankDriveState = true;
 
 	gyro->SetSensitivity(.007);
@@ -47,9 +47,6 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 }
 void Chassis::ToggleDrive()
 {
-	if(TankDriveState==true)
-	{
-        TankDriveState=!TankDriveState;
-	}
+       TankDriveState=!TankDriveState;
 }
 
