@@ -49,4 +49,26 @@ void Chassis::ToggleDrive()
 {
        TankDriveState=!TankDriveState;
 }
+void Chassis::DriveForwardAutonomous()
+{
+	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
+}
+void Chassis::DriveBackwardAutonomous()
+{
+	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
+}
+void Chassis::SlideLeftAutonomous()
+{
+	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
+}
+void Chassis::SlideRightAutonomous()
+{
+	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
+}
+
+
+void Chassis::StopAutonomous()
+{
+	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
+}
 

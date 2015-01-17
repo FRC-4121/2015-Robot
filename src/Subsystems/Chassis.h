@@ -20,6 +20,11 @@ public:
 	Chassis();
 	void InitDefaultCommand();
 	void DriveWithJoystick(Joystick *stickL, Joystick *stickR);
+	void DriveForwardAutonomous();
+	void DriveBackwardAutonomous();
+	void SlideLeftAutonomous();
+	void SlideRightAutonomous();
+	void StopAutonomous();
 	void ToggleDrive();
 };
 
