@@ -6,6 +6,8 @@
 #include "Subsystems/Lifter.h"
 
 
+//TEST FOR GITHUB
+
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
