@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef Auto_DriveForward_H
 #define Auto_DriveForward_H
 
@@ -20,6 +21,29 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+=======
+#ifndef AUTO_DRIVEFORWARD_H
+#define AUTO_DRIVEFORWARD_H
+
+#include "../CommandBase.h"
+
+/**
+ *
+ *
+ *
+ */
+class autoDriveForward: public CommandBase {
+private:
+	int driveTime;
+	//bool isForward;
+public:
+	autoDriveForward();
+  void Initialize();
+	void Execute();
+	bool IsFinished();
+	void End();
+  void Interrupted();
+>>>>>>> origin/Sophie's-Choice
 };
 
 #endif
