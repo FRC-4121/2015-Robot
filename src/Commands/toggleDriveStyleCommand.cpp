@@ -4,8 +4,8 @@
 
 	ToggleDrive::ToggleDrive()
 	{
-	// Use requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
+
+		//requires the subsystem chassis'
 		Requires(chassis);
 	}
 
@@ -20,6 +20,7 @@
 	// Called repeatedly when this Command is scheduled to run
 	void ToggleDrive::Execute()
 	{
+		//points to chassis' function to switch the drive style from mecanum to tank or vice versa
 		chassis->ToggleDrive();
 	}
 

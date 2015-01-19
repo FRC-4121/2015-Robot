@@ -2,8 +2,7 @@
 //rstywhymnrsdtjurtsymurnjswhna
 DriveWithJoysticks::DriveWithJoysticks()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
+	// Requires the subsystem chassis
 	Requires(chassis);
 }
 
@@ -16,6 +15,7 @@ void DriveWithJoysticks::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoysticks::Execute()
 {
+	//points to chassis' function that will use the positions of each joystick to either drive tank or mecanum style
 	chassis->DriveWithJoystick(oi->getDriveStickL(), oi->getDriveStickR());
 }
 
