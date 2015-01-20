@@ -13,12 +13,12 @@ Chassis::Chassis() : Subsystem("Chassis")
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 
 	//Robot drive based on a definition of the motor configuration of each motor controller for the wheels
-	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
+	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
 	//creates a new instance of Gyro
 	gyro = new Gyro(1);
 
-    //start off in tank drive
+	//start off in tank drive
 	TankDriveState = true;
 
 	gyro->SetSensitivity(.007);
@@ -44,48 +44,50 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	//Inputs:   Are Instances of the Joystick class.
 
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
+
 	if (TankDriveState)
 	{
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
 	}
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
+	else
 	{
-		robotDrive->TankDrive(stickL, stickR, FALSE);
+		robotDrive->TankDrive(stickL, stickR, true);
 	}
 	//mecanum drive based on angles
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 }
 void Chassis::ToggleDrive()
 {
-		//makes the boolean the opposite of what it previously was
-		//ex: if TankDriveState is true, this line of code will make it !(not) true so false
-       TankDriveState=!TankDriveState;
+	//makes the boolean the opposite of what it previously was
+	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
+	TankDriveState=!TankDriveState;
 }
 void Chassis::DriveForwardAutonomous()
 {
 	//drives the robot forward at half speed
-	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
+//	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
 }
 void Chassis::DriveBackwardAutonomous()
 {
 	//drives the robot backward at half speed
-	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
+//	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
 }
 void Chassis::SlideLeftAutonomous()
 {
 	//slides the robot left at half speed
-	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
+//	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
 }
 void Chassis::SlideRightAutonomous()
 {
 	//slides the robot right at half spped
-	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
+//	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
 }
 
 
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
-	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
+//	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
 }
 
