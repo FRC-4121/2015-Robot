@@ -1,13 +1,16 @@
-#ifndef DriveWithJoysticks_H
-#define DriveWithJoysticks_H
+#ifndef Auto_SlideRight_H
+#define Auto_SlideRight_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class DriveWithJoysticks: public CommandBase
+class autoSlideRight: public CommandBase
 {
+private:
+	bool timerStarted;
+	Timer *timer;
 public:
-	DriveWithJoysticks();
+	autoSlideRight();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

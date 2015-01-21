@@ -1,6 +1,6 @@
+#include <Commands/cmdToggleDriveStyle.h>
 #include "OI.h"
 #include "RobotMap.h"
-#include "Commands/toggleDriveStyleCommand.h"
 
 OI::OI()
 {
@@ -10,7 +10,7 @@ OI::OI()
 	//creates toggle drive button on left joystick
 	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
 	// when this button is pressed the data is sent to the toggle Drive command where it will be used accordingly
-	toggleButton->WhenPressed(new ToggleDrive());
+	toggleButton->WhenPressed(new cmdToggleDriveStyle());
 
 
 

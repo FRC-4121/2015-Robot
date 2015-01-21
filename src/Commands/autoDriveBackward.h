@@ -1,16 +1,16 @@
-#ifndef Auto_SlideRight_H
-#define Auto_SlideRight_H
+#ifndef Auto_DriveBackward_H
+#define Auto_DriveBackward_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class Auto_SlideRight: public CommandBase
+class autoDriveBackward: public CommandBase
 {
 private:
 	bool timerStarted;
 	Timer *timer;
 public:
-	Auto_SlideRight();
+	autoDriveBackward();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

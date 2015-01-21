@@ -8,11 +8,11 @@
 	 *
 	 * @author 322Programmer
 	 */
-	class ToggleDrive: public CommandBase
+	class cmdToggleDriveStyle: public CommandBase
 	{
 
 		public:
-		ToggleDrive();
+		cmdToggleDriveStyle();
 		void Initialize();
 		void Execute();
 		bool IsFinished();

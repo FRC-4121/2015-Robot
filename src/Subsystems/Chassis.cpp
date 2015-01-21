@@ -1,7 +1,7 @@
+#include <Commands/cmdDriveWithJoysticks.h>
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "RobotDrive.h"
-#include "../Commands/DriveWithJoysticks.h"
 
 Chassis::Chassis() : Subsystem("Chassis")
 {
@@ -31,7 +31,7 @@ Chassis::Chassis() : Subsystem("Chassis")
 void Chassis::InitDefaultCommand()
 {
 
-	SetDefaultCommand(new DriveWithJoysticks());
+	SetDefaultCommand(new cmdDriveWithJoysticks());
 }
 
 // Put methods for controlling this subsystem
@@ -66,28 +66,28 @@ void Chassis::ToggleDrive()
 void Chassis::DriveForwardAutonomous()
 {
 	//drives the robot forward at half speed
-//	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
 }
 void Chassis::DriveBackwardAutonomous()
 {
 	//drives the robot backward at half speed
-//	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
 }
 void Chassis::SlideLeftAutonomous()
 {
 	//slides the robot left at half speed
-//	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
 }
 void Chassis::SlideRightAutonomous()
 {
-	//slides the robot right at half spped
-//	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
+	//slides the robot right at half speed
+	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
 }
 
 
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
-//	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
 }
 

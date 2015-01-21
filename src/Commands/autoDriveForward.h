@@ -1,16 +1,16 @@
-#ifndef Auto_Forward_SlideLeft_H
-#define Auto_Forward_SlideLeft_H
+#ifndef Auto_DriveForward_H
+#define Auto_DriveForward_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class Auto_Forward_SlideLeft: public CommandBase
+class autoDriveForward: public CommandBase
 {
 private:
 	bool timerStarted;
 	Timer *timer;
 public:
-	Auto_Forward_SlideLeft();
+	autoDriveForward();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -1,42 +1,42 @@
-#include "toggleDriveStyleCommand.h"
+#include <Commands/cmdToggleDriveStyle.h>
 #include "..\Subsystems\Chassis.h"
 
 
-	ToggleDrive::ToggleDrive()
+	cmdToggleDriveStyle::cmdToggleDriveStyle()
 	{
 
 		//requires the subsystem chassis'
-		Requires(chassis);
+		Requires(mecanumChassis);
 	}
 
 
 	// Called just before this Command runs the first time
-	void ToggleDrive::Initialize()
+	void cmdToggleDriveStyle::Initialize()
 	{
 
 	}
 
 
 	// Called repeatedly when this Command is scheduled to run
-	void ToggleDrive::Execute()
+	void cmdToggleDriveStyle::Execute()
 	{
 		//points to chassis' function to switch the drive style from mecanum to tank or vice versa
-		chassis->ToggleDrive();
+		mecanumChassis->ToggleDrive();
 	}
 
 
 	// Make this return true when this Command no longer needs to run execute()
-	bool ToggleDrive::IsFinished() {
+	bool cmdToggleDriveStyle::IsFinished() {
 	return true;
 	}
 
 
 	// Called once after isFinished returns true
-	void ToggleDrive::End() {
+	void cmdToggleDriveStyle::End() {
 	}
 
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
-	void ToggleDrive::Interrupted() {
+	void cmdToggleDriveStyle::Interrupted() {
 	}
