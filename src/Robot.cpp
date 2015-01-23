@@ -6,13 +6,17 @@
 class Robot: public IterativeRobot
 {
 private:
-	Command *autonomousCommand;
+	Command *autonomousCommand, *autoDriveInBoxCommand;
 	LiveWindow *lw;
 
 	void RobotInit()
 	{
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
+
+		autoDriveInBoxCommand= new AutoDriveInBox();
+
+
 		lw = LiveWindow::GetInstance();
 	}
 	
@@ -25,6 +29,8 @@ private:
 	{
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
+		autoDriveInBoxCommand->Start();
+
 	}
 
 	void AutonomousPeriodic()
