@@ -1,6 +1,7 @@
 #include <Commands/cmdToggleDriveStyle.h>
 #include "OI.h"
 #include "RobotMap.h"
+#include "WPILib.h"
 
 OI::OI()
 {
@@ -20,6 +21,11 @@ OI::OI()
 
 
 
+	//X Box controller
+
+	controlXBox = new Joystick(JOYSTICKXBOX);
+
+
 }
 
 //will return the location of the data of the user input at the left joystick
@@ -30,4 +36,9 @@ Joystick* OI::getDriveStickL() {
 //will return the location of the data of the user input at the left joystick
 Joystick* OI::getDriveStickR() {
 	return driveStickR;
+}
+
+//will return the location of the data of the user input at the x box controller
+Joystick* OI::getControlXBox() {
+	return controlXBox;
 }
