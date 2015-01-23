@@ -11,10 +11,10 @@ private:
 	// for methods that implement subsystem capabilities
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
-	Gyro *gyro;
-	bool TankDriveState;
+//	Gyro *gyro;
 	Accelerometer *accel;
 
+	double chassisDriveStyle;
 
 public:
 	Chassis();
@@ -25,7 +25,7 @@ public:
 	void SlideLeftAutonomous();
 	void SlideRightAutonomous();
 	void StopAutonomous();
-	void ToggleDrive();
+	void CycleDrive();
 };
 
 #endif

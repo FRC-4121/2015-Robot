@@ -13,8 +13,6 @@ OI::OI()
 	toggleButton->WhenPressed(new cmdToggleDriveStyle());
 
 
-
-
 	//Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
 

@@ -23,6 +23,10 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static Chassis *mecanumChassis;
+
+	//Sensors
+	static Gyro *chassisGyro;
+
 };
 
 #endif
