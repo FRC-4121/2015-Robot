@@ -12,7 +12,7 @@ private:
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
 	Gyro *gyro;
-	bool TankDriveState;
+	bool DriveStyle;
 	Accelerometer *accel;
 
 

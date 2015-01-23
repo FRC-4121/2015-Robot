@@ -16,10 +16,10 @@ Chassis::Chassis() : Subsystem("Chassis")
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
 	//creates a new instance of Gyro
-	gyro = new Gyro(1);
+	gyro = new Gyro(0);
 
 	//start off in tank drive
-	TankDriveState = true;
+	DriveStyle = true;
 
 	gyro->SetSensitivity(.007);
 	gyro->Reset(); // Resets the gyro's heading
@@ -43,9 +43,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	//Using the driver station joysticks to drive the robot.
 	//Inputs:   Are Instances of the Joystick class.
 
-	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
+	SmartDashboard::PutNumber("Gyro:", (double) gyro->GetAngle());
+	SmartDashboard::PutNumber("Accelerometer:", (double) BuiltInAccelerometer());
 
-	if (TankDriveState)
+	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
+	if (DriveStyle)
 	{
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
 	}
@@ -60,8 +62,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 void Chassis::ToggleDrive()
 {
 	//makes the boolean the opposite of what it previously was
-	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
-	TankDriveState=!TankDriveState;
+	//ex: if DriveStyle is true, this line of code will make it !(not) true so false
+	DriveStyle=!DriveStyle;
+	SmartDashboard::PutBoolean("Cartesian Drive State:", DriveStyle);
+
+
 }
 void Chassis::DriveForwardAutonomous()
 {
