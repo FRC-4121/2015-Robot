@@ -35,7 +35,7 @@ void autoSlideLeft::Execute()
 		timerStarted = true;
 	}
 	//points to the function in chassis that slides the robot right at half speed
-	mecanumChassis->DriveDirectionAutonomous(-.5, 0, 0, gyro->GetAngle());
+	mecanumChassis->DriveDirectionAutonomous(-.5, 0, 0, CommandBase::gyro->GetAngle());
 
 
 }

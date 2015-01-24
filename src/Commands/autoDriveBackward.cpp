@@ -30,7 +30,7 @@ void autoDriveBackward::Execute()
 			timerStarted = true;
 		}
 	//points to the function in chassis that drive the robot backwards at half speed
-		mecanumChassis->DriveDirectionAutonomous(0, -.5, 0, gyro->GetAngle());
+		mecanumChassis->DriveDirectionAutonomous(0, -.5, 0, CommandBase::gyro->GetAngle());
 
 
 }

@@ -2,6 +2,8 @@
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "RobotDrive.h"
+#include "CommandBase.h"
+
 
 Chassis::Chassis() : Subsystem("Chassis")
 {
@@ -16,13 +18,13 @@ Chassis::Chassis() : Subsystem("Chassis")
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
 	//creates a new instance of Gyro
-	gyro = new Gyro(0);
+//	gyro = new Gyro(0);
 
 	//start off in tank drive
 	DriveStyle = true;
 
-	gyro->SetSensitivity(.007);
-	gyro->Reset(); // Resets the gyro's heading
+	CommandBase::gyro->SetSensitivity(.007);
+	CommandBase::gyro->Reset(); // Resets the gyro's heading
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
@@ -43,13 +45,13 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	//Using the driver station joysticks to drive the robot.
 	//Inputs:   Are Instances of the Joystick class.
 
-	SmartDashboard::PutNumber("Gyro:", (double) gyro->GetAngle());
-	SmartDashboard::PutNumber("Accelerometer:", (double) BuiltInAccelerometer());
+	SmartDashboard::PutNumber("Gyro:", (double) CommandBase::gyro->GetAngle());
+//	SmartDashboard::PutNumber("Accelerometer:", (double) BuiltInAccelerometer());
 
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
 	if (DriveStyle)
 	{
-		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), CommandBase::gyro->GetAngle());
 	}
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
 	else
@@ -94,6 +96,6 @@ void Chassis::SlideRightAutonomous()
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
-	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, 0, 0, CommandBase::gyro->GetAngle());
 }
 

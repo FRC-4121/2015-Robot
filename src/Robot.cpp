@@ -2,10 +2,10 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
-#include  "autoDriveForward.h"
-#include  "autoSlideRight.h"
-#include  "autoDriveBackward.h"
-#include  "autoSlideLeft.h"
+#include  "Commands/autoDriveForward.h"
+#include  "Commands/autoSlideRight.h"
+#include  "Commands/autoDriveBackward.h"
+#include  "Commands/autoSlideLeft.h"
 
 
 class Robot: public IterativeRobot
@@ -62,10 +62,10 @@ private:
 	void AutonomousPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
-		autonomousForwardCommand->Run();
-		autonomousRightCommand->Run();
-		autonomousBackwardCommand->Run();
-		autonomousLeftCommand->Run();
+//		autonomousForwardCommand->Run();
+//		autonomousRightCommand->Run();
+//		autonomousBackwardCommand->Run();
+//		autonomousLeftCommand->Run();
 
 	}
 

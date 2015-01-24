@@ -29,6 +29,4 @@ void CommandBase::init()
 	oi = new OI();
 	mecanumChassis = new Chassis();
 	gyro= new Gyro(0);
-	gyro->SetSensitivity(.007);
-	gyro->Reset(); // Resets the gyro's heading
 }

@@ -5,9 +5,13 @@
 #include "autoDriveForward.h"
 #include "autoSlideLeft.h"
 
+#include "CommandBase.h"
+#include "..\Subsystems\Chassis.h"
+
 autoDriveInBox::autoDriveInBox()
 {
-	Requires (chassis);
+
+//	Requires(mecanumChassis);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
