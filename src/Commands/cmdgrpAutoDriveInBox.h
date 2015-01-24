@@ -4,10 +4,10 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 
-class AutoDriveInBox: public CommandGroup
+class autoDriveInBox: public CommandGroup
 {
 public:
-	AutoDriveInBox();
+	autoDriveInBox();
 };
 
 #endif

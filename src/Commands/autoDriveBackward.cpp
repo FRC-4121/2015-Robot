@@ -1,4 +1,5 @@
 #include <Commands/autoDriveBackward.h>
+#include "CommandBase.h"
 
 autoDriveBackward::autoDriveBackward()
 {
@@ -29,7 +30,7 @@ void autoDriveBackward::Execute()
 			timerStarted = true;
 		}
 	//points to the function in chassis that drive the robot backwards at half speed
-		mecanumChassis->DriveBackwardAutonomous();
+		mecanumChassis->DriveDirectionAutonomous(0, -.5, 0, gyro->GetAngle());
 
 
 }

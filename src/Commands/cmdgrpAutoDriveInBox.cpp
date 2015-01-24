@@ -3,9 +3,9 @@
 #include "autoDriveBackward.h"
 #include "autoSlideRight.h"
 #include "autoDriveForward.h"
-#include "cmdAutoSlideLeft.h"
+#include "autoSlideLeft.h"
 
-AutoDriveInBox::AutoDriveInBox()
+autoDriveInBox::autoDriveInBox()
 {
 	Requires (chassis);
 	// Add Commands here:
@@ -28,7 +28,7 @@ AutoDriveInBox::AutoDriveInBox()
 	AddSequential (new autoDriveForward());
 	AddSequential (new autoSlideRight());
 	AddSequential (new autoDriveBackward());
-	AddSequential (new cmdAutoSlideLeft());
+	AddSequential (new autoSlideLeft());
 
 
 

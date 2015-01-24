@@ -1,8 +1,7 @@
-#include <Commands/autoDriveForward.h>
-#include <Commands/cmdDriveWithJoysticks.h>
+#include "Commands/autoDriveForward.h"
+#include "Commands/cmdDriveWithJoysticks.h"
 #include "..\Subsystems\Chassis.h"
 #include "../RobotMap.h"
-#include "RobotDrive.h"
 
 
 
@@ -39,7 +38,7 @@ void autoDriveForward::Execute()
 		timerStarted = true;
 	}
 	//points to the function in chassis that drive the robot forward at half speed
-	mecanumChassis->DriveForwardAutonomous();
+	mecanumChassis->DriveDirectionAutonomous(0, .5, 0, gyro->GetAngle());
 
 }
 

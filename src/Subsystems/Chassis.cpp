@@ -68,11 +68,12 @@ void Chassis::ToggleDrive()
 
 
 }
-void Chassis::DriveForwardAutonomous()
+void Chassis::DriveDirectionAutonomous(float x, float y, float r, float a)
 {
-	//drives the robot forward at half speed
-	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
+	//drives the robot given the values from the command that pointed to it
+	robotDrive->MecanumDrive_Cartesian(x, y, r, a);
 }
+/*
 void Chassis::DriveBackwardAutonomous()
 {
 	//drives the robot backward at half speed
@@ -88,7 +89,7 @@ void Chassis::SlideRightAutonomous()
 	//slides the robot right at half speed
 	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
 }
-
+*/
 
 void Chassis::StopAutonomous()
 {

@@ -1,16 +1,16 @@
-#ifndef cmdAutoSlideLeft_H
-#define cmdAutoSlideLeft_H
+#ifndef autoSlideLeft_H
+#define autoSlideLeft_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class cmdAutoSlideLeft: public CommandBase
+class autoSlideLeft: public CommandBase
 {
 private:
 	bool timerStarted;
 	Timer *timer;
 public:
-	cmdAutoSlideLeft();
+	autoSlideLeft();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
