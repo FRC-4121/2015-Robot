@@ -21,7 +21,7 @@
 	void cmdToggleDriveStyle::Execute()
 	{
 		//points to chassis' function to switch the drive style from mecanum to tank or vice versa
-		mecanumChassis->ToggleDrive();
+		mecanumChassis->CycleDrive();
 	}
 
 

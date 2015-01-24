@@ -2,7 +2,7 @@
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "RobotDrive.h"
-#inlcude "../OI.h"
+#include "../OI.h"
 
 Chassis::Chassis() : Subsystem("Chassis")
 {
@@ -102,6 +102,11 @@ void Chassis::SlideRightAutonomous()
 	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, CommandBase::chassisGyro->GetAngle());
 }
 
+void Chassis::DriveAutonomous(float x, float y, float r)
+{
+	//slides the robot right at half speed
+	robotDrive->MecanumDrive_Cartesian(x, y, r, CommandBase::chassisGyro->GetAngle());
+}
 
 void Chassis::StopAutonomous()
 {

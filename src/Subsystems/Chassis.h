@@ -14,7 +14,7 @@ private:
 //	Gyro *gyro;
 	Accelerometer *accel;
 
-	double chassisDriveStyle;
+	int chassisDriveStyle;
 
 public:
 	Chassis();
@@ -24,6 +24,7 @@ public:
 	void DriveBackwardAutonomous();
 	void SlideLeftAutonomous();
 	void SlideRightAutonomous();
+	void DriveAutonomous(float x, float y, float r);
 	void StopAutonomous();
 	void CycleDrive();
 };
