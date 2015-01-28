@@ -2,6 +2,7 @@
 #include "../RobotMap.h"
 #include "RobotDrive.h"
 #include "../Commands/DriveWithJoysticks.h"
+#include "../Commands/toggleDriveStyleCommand.h"
 
 Chassis::Chassis() :
 		Subsystem("Chassis")
@@ -11,7 +12,11 @@ Chassis::Chassis() :
 	rearLeftTalon = new Talon(REAR_LEFT_TALON);
 	rearRightTalon = new Talon(REAR_RIGHT_TALON);
 
+
 	robotDrive = new RobotDrive(frontLeftTalon, frontRightTalon, rearLeftTalon, rearRightTalon);
+	gyro = new Gyro(1);
+
+
 }
 
 void Chassis::InitDefaultCommand()
@@ -19,6 +24,10 @@ void Chassis::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 
+	gyro->SetSensitivity(.007);
+
+
+	gyro->Reset();
 	SetDefaultCommand(new DriveWithJoysticks());
 
 }
@@ -28,11 +37,16 @@ void Chassis::InitDefaultCommand()
 
 void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR) {
 	//Purpose:
-		//Using the driver station joysticks to drive the robot.
+	//Using the driver station joysticks to drive the robot.
 	//Inputs:   Are Instances of the Joystick class.
 
 	//true precision drive
 	//false standard drive
 
-	robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX());
+	if(toggleDriveStyleCommand::DriveStyle = "Cartesian"){
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+	} else if(toggleDriveStyleCommand::DriveStyle = "Tank") {
+		// Tank Drive
+	}
+//	robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
 }
