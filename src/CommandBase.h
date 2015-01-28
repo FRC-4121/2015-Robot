@@ -6,6 +6,7 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/Chassis.h"
 #include "OI.h"
+#include "Subsystems/DataDisplay.h"
 #include "WPILib.h"
 
 /**
@@ -23,6 +24,7 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static Chassis *mecanumChassis;
+	static DataDisplay *driverDisplay;
 };
 
 #endif
