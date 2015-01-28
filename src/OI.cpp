@@ -5,7 +5,15 @@
 OI::OI()
 {
 	// Process operator interface input here.
-	//Left Joystick
+
+//	Sensors
+	//creates a new instance of Gyro
+	gyro = new Gyro(0);
+	gyro->SetSensitivity(.007);
+	gyro->Reset(); // Resets the gyro's heading
+
+
+//Left Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
 	//creates toggle drive button on left joystick
 	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
@@ -15,7 +23,7 @@ OI::OI()
 
 
 
-	//Right Joystick
+//Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
 
 
@@ -23,11 +31,19 @@ OI::OI()
 }
 
 //will return the location of the data of the user input at the left joystick
-Joystick* OI::getDriveStickL() {
+Gyro* OI::getGyro()
+{
+	return gyro;
+}
+
+
+Joystick* OI::getDriveStickL()
+{
 	return driveStickL;
 }
 
 //will return the location of the data of the user input at the left joystick
-Joystick* OI::getDriveStickR() {
+Joystick* OI::getDriveStickR()
+{
 	return driveStickR;
 }

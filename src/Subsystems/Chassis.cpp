@@ -1,3 +1,4 @@
+#include "../CommandBase.h"
 #include <Commands/cmdDriveWithJoysticks.h>
 #include "Chassis.h"
 #include "../RobotMap.h"
@@ -15,14 +16,14 @@ Chassis::Chassis() : Subsystem("Chassis")
 	//Robot drive based on a definition of the motor configuration of each motor controller for the wheels
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
-	//creates a new instance of Gyro
-	gyro = new Gyro(0);
+//	//creates a new instance of Gyro
+//	gyro = new Gyro(0);
 
 	//start off in tank drive
 	TankDriveState = true;
 
-	gyro->SetSensitivity(.007);
-	gyro->Reset(); // Resets the gyro's heading
+//	gyro->SetSensitivity(.007);
+//	gyro->Reset(); // Resets the gyro's heading
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
@@ -45,9 +46,10 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
 
+
 	if (TankDriveState)
 	{
-		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  CommandBase::oi->getGyro()->GetAngle());
 	}
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
 	else
@@ -66,28 +68,28 @@ void Chassis::ToggleDrive()
 void Chassis::DriveForwardAutonomous()
 {
 	//drives the robot forward at half speed
-	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, .5, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 void Chassis::DriveBackwardAutonomous()
 {
 	//drives the robot backward at half speed
-	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, -.5, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 void Chassis::SlideLeftAutonomous()
 {
 	//slides the robot left at half speed
-	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(-.5, 0, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 void Chassis::SlideRightAutonomous()
 {
 	//slides the robot right at half speed
-	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 
 
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
-	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, 0, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 

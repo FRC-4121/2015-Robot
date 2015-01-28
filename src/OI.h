@@ -7,9 +7,11 @@ class OI
 {
 private:
 	Joystick *driveStickR, *driveStickL;
-
+	Gyro *gyro;
 public:
 	OI();
+	//Sensors
+	Gyro* getGyro();
 	//Right JoyStick
 	Joystick* getDriveStickR();
 	JoystickButton *toggleButton; // Button 1 is the trigger for toggling the drive state

@@ -11,7 +11,7 @@ private:
 	// for methods that implement subsystem capabilities
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
-	Gyro *gyro;
+//	Gyro *gyro;
 	bool TankDriveState;
 	Accelerometer *accel;
 
