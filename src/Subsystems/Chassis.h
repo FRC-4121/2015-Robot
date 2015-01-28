@@ -11,8 +11,8 @@ private:
 	// for methods that implement subsystem capabilities
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
-//	Gyro *gyro;
-	bool DriveStyle;
+	Gyro *gyro;
+	bool TankDriveState;
 	Accelerometer *accel;
 
 
@@ -20,7 +20,10 @@ public:
 	Chassis();
 	void InitDefaultCommand();
 	void DriveWithJoystick(Joystick *stickL, Joystick *stickR);
-	void DriveDirectionAutonomous(float x, float y, float r, float a);
+	void DriveForwardAutonomous();
+	void DriveBackwardAutonomous();
+	void SlideLeftAutonomous();
+	void SlideRightAutonomous();
 	void StopAutonomous();
 	void ToggleDrive();
 };

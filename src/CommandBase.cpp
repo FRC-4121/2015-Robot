@@ -7,12 +7,10 @@
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 Chassis* CommandBase::mecanumChassis = NULL;
-Gyro* CommandBase::gyro= NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
 {
-
 }
 
 CommandBase::CommandBase() :
@@ -28,5 +26,4 @@ void CommandBase::init()
 	examplesubsystem = new ExampleSubsystem();
 	oi = new OI();
 	mecanumChassis = new Chassis();
-	gyro= new Gyro(0);
 }

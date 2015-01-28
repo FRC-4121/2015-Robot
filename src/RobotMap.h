@@ -23,7 +23,6 @@
 
 #define JOYSTICKLEFT (0)
 #define JOYSTICKRIGHT (1)
-#define JOYSTICKXBOX (2)
 
 typedef enum
 {
@@ -42,22 +41,14 @@ typedef enum{
 	THUMB_BUTTON_UP,//button 3
 	THUMB_BUTTON_LEFT,//button 4
 	THUMB_BUTTON_RIGHT, // Button Number 5
-
 	TRIGGER_fTOGGLE,//button 6
-
 	LEFT_SIDE_asdlkfjadks,//button 7
 	FRONT_SIDE_LEFT,// 8
 	FRONT_SIDE_RIGHT,//9
 	RIGHT_SIDE_DOWN, // Button Number 10
 	RIGHT_SIDE_UP,
 	NUM_OF_JOYSTICK_BUTTONS
-} JOYSTICK_BUTTONS_T;
+} JOYSTICE_BUTTONS_T;
 
-typedef enum{
-
-
-
-
-}X_BOX_BUTTONS;
 
 #endif

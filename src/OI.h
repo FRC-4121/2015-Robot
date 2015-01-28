@@ -6,7 +6,7 @@
 class OI
 {
 private:
-	Joystick *driveStickR, *driveStickL, *controlXBox;
+	Joystick *driveStickR, *driveStickL;
 
 public:
 	OI();
@@ -16,11 +16,6 @@ public:
 
 	//Left Joystick
 	Joystick* getDriveStickL();
-
-
-
-	//X Box
-	Joystick* getControlXBox();
 };
 
 #endif

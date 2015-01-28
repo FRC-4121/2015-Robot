@@ -2,8 +2,6 @@
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "RobotDrive.h"
-#include "CommandBase.h"
-
 
 Chassis::Chassis() : Subsystem("Chassis")
 {
@@ -18,13 +16,13 @@ Chassis::Chassis() : Subsystem("Chassis")
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
 	//creates a new instance of Gyro
-//	gyro = new Gyro(0);
+	gyro = new Gyro(0);
 
 	//start off in tank drive
-	DriveStyle = true;
+	TankDriveState = true;
 
-	CommandBase::gyro->SetSensitivity(.007);
-	CommandBase::gyro->Reset(); // Resets the gyro's heading
+	gyro->SetSensitivity(.007);
+	gyro->Reset(); // Resets the gyro's heading
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
@@ -45,13 +43,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	//Using the driver station joysticks to drive the robot.
 	//Inputs:   Are Instances of the Joystick class.
 
-	SmartDashboard::PutNumber("Gyro:", (double) CommandBase::gyro->GetAngle());
-//	SmartDashboard::PutNumber("Accelerometer:", (double) BuiltInAccelerometer());
-
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
-	if (DriveStyle)
+
+	if (TankDriveState)
 	{
-		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), CommandBase::gyro->GetAngle());
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyro->GetAngle());
 	}
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
 	else
@@ -64,18 +60,14 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 void Chassis::ToggleDrive()
 {
 	//makes the boolean the opposite of what it previously was
-	//ex: if DriveStyle is true, this line of code will make it !(not) true so false
-	DriveStyle=!DriveStyle;
-	SmartDashboard::PutBoolean("Cartesian Drive State:", DriveStyle);
-
-
+	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
+	TankDriveState=!TankDriveState;
 }
-void Chassis::DriveDirectionAutonomous(float x, float y, float r, float a)
+void Chassis::DriveForwardAutonomous()
 {
-	//drives the robot given the values from the command that pointed to it
-	robotDrive->MecanumDrive_Cartesian(x, y, r, a);
+	//drives the robot forward at half speed
+	robotDrive->MecanumDrive_Cartesian(0, .5, 0, gyro->GetAngle());
 }
-/*
 void Chassis::DriveBackwardAutonomous()
 {
 	//drives the robot backward at half speed
@@ -91,11 +83,11 @@ void Chassis::SlideRightAutonomous()
 	//slides the robot right at half speed
 	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, gyro->GetAngle());
 }
-*/
+
 
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
-	robotDrive->MecanumDrive_Cartesian(0, 0, 0, CommandBase::gyro->GetAngle());
+	robotDrive->MecanumDrive_Cartesian(0, 0, 0, gyro->GetAngle());
 }
 

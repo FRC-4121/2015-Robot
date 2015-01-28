@@ -7,7 +7,6 @@
 #include "Subsystems/Chassis.h"
 #include "OI.h"
 #include "WPILib.h"
-#include "Gyro.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -24,7 +23,6 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
 	static Chassis *mecanumChassis;
-	static Gyro *gyro;
 };
 
 #endif
