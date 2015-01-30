@@ -9,7 +9,7 @@ OI::OI()
 //	Sensors
 	//creates a new instance of Gyro
 	gyro = new Gyro(0);
-	gyro->SetSensitivity(.007);
+	gyro->SetSensitivity(.0125);
 	gyro->Reset(); // Resets the gyro's heading
 
 

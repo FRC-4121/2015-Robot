@@ -12,7 +12,7 @@ private:
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
 //	Gyro *gyro;
-	bool TankDriveState;
+	bool mecanumDriveState;
 	Accelerometer *accel;
 
 
@@ -26,6 +26,7 @@ public:
 	void SlideRightAutonomous();
 	void StopAutonomous();
 	void ToggleDrive();
+	bool GetDriveState();
 };
 
 #endif

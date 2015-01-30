@@ -20,7 +20,7 @@ Chassis::Chassis() : Subsystem("Chassis")
 //	gyro = new Gyro(0);
 
 	//start off in tank drive
-	TankDriveState = true;
+	mecanumDriveState = true;
 
 //	gyro->SetSensitivity(.007);
 //	gyro->Reset(); // Resets the gyro's heading
@@ -47,14 +47,15 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
 
 
-	if (TankDriveState)
+	if (mecanumDriveState)
 	{
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  CommandBase::oi->getGyro()->GetAngle());
 	}
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
 	else
 	{
-		robotDrive->TankDrive(stickL, stickR, true);
+		//Left stick is reversed because of the motor directions needed to make mecanum work properly.
+		robotDrive->TankDrive(-(stickL->GetY()), (stickR->GetY()),false);//stickR, stickL, true)
 	}
 	//mecanum drive based on angles
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
@@ -63,7 +64,7 @@ void Chassis::ToggleDrive()
 {
 	//makes the boolean the opposite of what it previously was
 	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
-	TankDriveState=!TankDriveState;
+	mecanumDriveState=!mecanumDriveState;
 }
 void Chassis::DriveForwardAutonomous()
 {
@@ -91,5 +92,9 @@ void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot
 	robotDrive->MecanumDrive_Cartesian(0, 0, 0, CommandBase::oi->getGyro()->GetAngle());
+}
+bool Chassis::GetDriveState()
+{
+	return mecanumDriveState;
 }
 

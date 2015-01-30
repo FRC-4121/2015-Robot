@@ -1,5 +1,4 @@
 #include "DataDashboardCommand.h"
-#include "DataDisplay.h"
 
 DataDashboardCommand::DataDashboardCommand()
 {
@@ -18,8 +17,7 @@ void DataDashboardCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DataDashboardCommand::Execute()
 {
-	driverDisplay->DataDisplay();
-
+	driverDisplay->DisplayAll();
 }
 
 // Make this return true when this Command no longer needs to run execute()
