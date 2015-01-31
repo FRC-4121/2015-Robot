@@ -27,11 +27,13 @@ Chassis::Chassis() : Subsystem("Chassis")
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
+
+	robotDrive->SetSafetyEnabled(false);
+	robotDrive->SetMaxOutput(.7);
 }
 
 void Chassis::InitDefaultCommand()
 {
-
 	SetDefaultCommand(new cmdDriveWithJoysticks());
 }
 

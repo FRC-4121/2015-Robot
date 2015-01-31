@@ -25,6 +25,7 @@ void  DataDisplay::DisplayAll()
 {
 
 	SmartDashboard::PutNumber("Gyro: ", CommandBase::oi->getGyro()->GetAngle());
+
 	SmartDashboard::PutBoolean("Mecanum Drive", CommandBase::mecanumChassis->GetDriveState());
 
 }

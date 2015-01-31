@@ -14,6 +14,11 @@ private:
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+
+
+		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
+		CommandBase::oi->getGyro()->InitGyro();
+		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
 	}
 	
 	void DisabledPeriodic()
@@ -23,8 +28,8 @@ private:
 
 	void AutonomousInit()
 	{
-		if (autonomousCommand != NULL)
-			autonomousCommand->Start();
+		//if (autonomousCommand != NULL)
+			//autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
