@@ -25,7 +25,9 @@ void  DataDisplay::DisplayAll()
 {
 
 	SmartDashboard::PutNumber("Gyro: ", CommandBase::oi->getGyro()->GetAngle());
-
 	SmartDashboard::PutBoolean("Mecanum Drive", CommandBase::mecanumChassis->GetDriveState());
+	//SmartDashboard::PutBoolean("Solenoid Extended", CommandBase::loaderSubsystem->GetSolenoidState());
+	//NEED A BOOLEAN (SolenoidState) AND BOOLEAN METHOD (GetSolenoidState()) IN THE LOADER SUBSYSTEM SO THAT WE CAN TELL WHEN THE SOLENOID IS EXTENDED OR NOT
+
 
 }

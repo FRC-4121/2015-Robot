@@ -3,6 +3,7 @@
 #include "Subsystems/Chassis.h"
 #include "Commands/Scheduler.h"
 #include "Subsystems/DataDisplay.h"
+#include "Subsystems/AxisCamera.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
@@ -29,4 +30,5 @@ void CommandBase::init()
 	oi = new OI();
 	mecanumChassis = new Chassis();
 	driverDisplay = new DataDisplay();
+
 }
