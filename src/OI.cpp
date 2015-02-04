@@ -1,4 +1,8 @@
 #include <Commands/cmdToggleDriveStyle.h>
+#include <Commands/ExtendGripperCommand.h>
+#include <Commands/RetractGripperCommand.h>
+#include <Commands/ExtendLoaderCommand.h>
+#include <Commands/RetractLoaderCommand.h>
 #include "OI.h"
 #include "RobotMap.h"
 
@@ -7,7 +11,7 @@ OI::OI()
 	// Process operator interface input here.
 
 //	Sensors
-	//creates a new instance of Gyro
+//creates a new instance of Gyro
 	gyro = new Gyro(0);
 	gyro->InitGyro();
 	gyro->SetSensitivity(.0125);
@@ -22,10 +26,21 @@ OI::OI()
 	toggleButton->WhenPressed(new cmdToggleDriveStyle());
 
 
-
-
 //Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
+
+//toteLifterSolenoid
+	lifterSolenoidLower = new JoystickButton(driveStickL, THUMB_BUTTON_DOWN);
+	lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand());
+	lifterSolenoidRaise = new JoystickButton(driveStickL, THUMB_BUTTON_UP);
+	lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
+
+//toteGripperSolenoid
+	gripperSolenoidExtend = new JoystickButton(driveStickL, THUMB_BUTTON_RIGHT);
+	gripperSolenoidExtend->WhenPressed(new cmdExtendGripperCommand());
+	gripperSolenoidRetract = new JoystickButton(driveStickL, THUMB_BUTTON_LEFT);
+	gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
+
 
 
 

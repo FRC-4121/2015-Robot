@@ -1,6 +1,7 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <Subsystems/Lifter.h>
 #include <string>
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
@@ -26,6 +27,8 @@ public:
 	static Chassis *mecanumChassis;
 	static DataDisplay *driverDisplay;
 	static AxisCamera *cameraDisplay;
+	static Lifter *toteLifter;
+	static Lifter *toteGripper;
 };
 
 #endif

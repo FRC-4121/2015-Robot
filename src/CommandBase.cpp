@@ -3,13 +3,16 @@
 #include "Subsystems/Chassis.h"
 #include "Commands/Scheduler.h"
 #include "Subsystems/DataDisplay.h"
-#include "Subsystems/AxisCamera.h"
+#include "Subsystems/Lifter.h"
+
 
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 Chassis* CommandBase::mecanumChassis = NULL;
 DataDisplay* CommandBase::driverDisplay = NULL;
+Lifter* CommandBase::toteLifter = NULL;
+//Lifter* CommandBase::toteGripper = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -30,5 +33,7 @@ void CommandBase::init()
 	oi = new OI();
 	mecanumChassis = new Chassis();
 	driverDisplay = new DataDisplay();
+	toteLifter = new Lifter();
+//	toteGripper= new Lifter();
 
 }
