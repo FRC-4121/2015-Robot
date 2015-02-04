@@ -6,7 +6,7 @@ OI::OI()
 {
 	// Process operator interface input here.
 
-//	Sensors
+	//	Sensors
 	//creates a new instance of Gyro
 	gyro = new Gyro(0);
 	gyro->InitGyro();
@@ -14,7 +14,18 @@ OI::OI()
 	gyro->Reset(); // Resets the gyro's heading
 
 
-//Left Joystick
+	//Encoder
+	frontLeftEncoder= new Encoder(0,1,true);
+	frontLeftEncoder->SetDistancePerPulse(0.075);
+	frontRightEncoder= new Encoder(2,3,true);
+	frontRightEncoder->SetDistancePerPulse(.075);
+	backRightEncoder= new Encoder(4,5,true);
+	backRightEncoder->SetDistancePerPulse(.075);
+	backLeftEncoder= new Encoder(6,7,true);
+	backLeftEncoder->SetDistancePerPulse(.075);
+
+
+	//Left Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
 	//creates toggle drive button on left joystick
 	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
@@ -24,7 +35,7 @@ OI::OI()
 
 
 
-//Right Joystick
+	//Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
 
 

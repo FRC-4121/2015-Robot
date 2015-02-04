@@ -3,6 +3,7 @@
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "RobotDrive.h"
+#include "OI.h"
 
 Chassis::Chassis() : Subsystem("Chassis")
 {
@@ -68,6 +69,13 @@ void Chassis::ToggleDrive()
 	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
 	mecanumDriveState=!mecanumDriveState;
 }
+
+
+void Chassis::AutoDrive(float x, float y, float z)
+{
+	robotDrive->MecanumDrive_Cartesian(x, y, z, CommandBase::oi->getGyro()->GetAngle());
+}
+/*
 void Chassis::DriveForwardAutonomous()
 {
 	//drives the robot forward at half speed
@@ -89,7 +97,7 @@ void Chassis::SlideRightAutonomous()
 	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 
-
+*/
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot

@@ -12,6 +12,9 @@ public:
 	OI();
 	//Sensors
 	Gyro* getGyro();
+	Encoder* frontLeftEncoder, frontRightEncoder,backLeftEncoder, backRightEncoder;
+
+
 	//Right JoyStick
 	Joystick* getDriveStickR();
 	JoystickButton *toggleButton; // Button 1 is the trigger for toggling the drive state
