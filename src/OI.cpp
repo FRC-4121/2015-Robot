@@ -9,20 +9,17 @@ OI::OI()
 	//	Sensors
 	//creates a new instance of Gyro
 	gyro = new Gyro(0);
-	gyro->InitGyro();
-	gyro->SetSensitivity(.0125);
-	gyro->Reset(); // Resets the gyro's heading
 
 
 	//Encoder
-	frontLeftEncoder= new Encoder(0,1,true);
+	frontLeftEncoder = new Encoder(0,1,true);
 	frontLeftEncoder->SetDistancePerPulse(0.075);
 	frontRightEncoder= new Encoder(2,3,true);
-	frontRightEncoder->SetDistancePerPulse(.075);
+	frontRightEncoder->SetDistancePerPulse(0.075);
 	backRightEncoder= new Encoder(4,5,true);
-	backRightEncoder->SetDistancePerPulse(.075);
+	backRightEncoder->SetDistancePerPulse(0.075);
 	backLeftEncoder= new Encoder(6,7,true);
-	backLeftEncoder->SetDistancePerPulse(.075);
+	backLeftEncoder->SetDistancePerPulse(0.075);
 
 
 	//Left Joystick
@@ -46,6 +43,24 @@ OI::OI()
 Gyro* OI::getGyro()
 {
 	return gyro;
+}
+
+
+Encoder* OI::getFrontLeftEncoder()
+{
+	return frontLeftEncoder;
+}
+Encoder* OI::getFrontRightEncoder()
+{
+	return frontRightEncoder;
+}
+Encoder* OI::getBackLeftEncoder()
+{
+	return backLeftEncoder;
+}
+Encoder* OI::getBackRightEncoder()
+{
+	return backRightEncoder;
 }
 
 

@@ -1,26 +1,29 @@
-#include "AutoForward.h"
+#include "AutoBackward.h"
 
-AutoForward::AutoForward()
+AutoBackward::AutoBackward()
 {
-	// Use Requires() here to declare subsystem dependencies
+
 	Requires(mecanumChassis);
 
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void AutoForward::Initialize()
+void AutoBackward::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AutoForward::Execute()
+void AutoBackward::Execute()
 {
-	mecanumChassis->AutoDrive(0, .5, 0);//tells chassis to go forward at half speed
+	mecanumChassis->AutoDrive(0, -.5, 0);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AutoForward::IsFinished()
+bool AutoBackward::IsFinished()
 {
 	bool retVal= false;
 	if(48<=oi->getFrontLeftEncoder()->GetDistance())//drives four feet at the moment since pulse proportion is done in inches
@@ -32,20 +35,19 @@ bool AutoForward::IsFinished()
 		retVal=false;
 	}
 	return retVal;
+
 }
 
 // Called once after isFinished returns true
-void AutoForward::End()
+void AutoBackward::End()
 {
-
 	mecanumChassis->StopAutonomous();//stop all auto movement forward
-	oi->getFrontLeftEncoder()->Reset(); //reset the distance measured by encoder to zero
-
+	oi->getFrontLeftEncoder()->Reset();//reset the distance measured by encoder to zero
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AutoForward::Interrupted()
+void AutoBackward::Interrupted()
 {
 
 }

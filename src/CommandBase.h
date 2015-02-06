@@ -26,7 +26,7 @@ public:
 	static Chassis *mecanumChassis;
 	static DataDisplay *driverDisplay;
 	//static AxisCamera *cameraDisplay;
-	static Encoder* frontLeftEncoder,frontRightEncoder,backRightEncoder,backLeftEncoder;
+
 };
 
 #endif

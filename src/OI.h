@@ -12,7 +12,7 @@ public:
 	OI();
 	//Sensors
 	Gyro* getGyro();
-	Encoder* frontLeftEncoder, frontRightEncoder,backLeftEncoder, backRightEncoder;
+	Encoder *frontLeftEncoder, *frontRightEncoder, *backLeftEncoder,*backRightEncoder, *getFrontLeftEncoder(), *getFrontRightEncoder(), *getBackLeftEncoder(), *getBackRightEncoder();
 
 
 	//Right JoyStick
