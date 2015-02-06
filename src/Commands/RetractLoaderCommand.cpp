@@ -5,6 +5,7 @@
 cmdRetractLoaderCommand::cmdRetractLoaderCommand() {
 	// Use requires() here to declare subsystem dependencies
 	//requires(examplesubsystem)
+	Requires(toteLifter);
 }
 
 // Called just before this Command runs the first time

@@ -17,6 +17,7 @@ public:
 	JoystickButton *toggleButton; // Button 1 is the trigger for toggling the drive state
 	JoystickButton *lifterSolenoidLower, *lifterSolenoidRaise;
 	JoystickButton *gripperSolenoidExtend, *gripperSolenoidRetract;
+	JoystickButton *stopEverything;
 
 	//Left Joystick
 	Joystick* getDriveStickL();

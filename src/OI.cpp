@@ -3,6 +3,7 @@
 #include <Commands/RetractGripperCommand.h>
 #include <Commands/ExtendLoaderCommand.h>
 #include <Commands/RetractLoaderCommand.h>
+#include <Commands/cmdStopPneumatics.h>
 #include "OI.h"
 #include "RobotMap.h"
 
@@ -20,28 +21,32 @@ OI::OI()
 
 //Left Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
-	//creates toggle drive button on left joystick
-	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
-	// when this button is pressed the data is sent to the toggle Drive command where it will be used accordingly
-	toggleButton->WhenPressed(new cmdToggleDriveStyle());
+
+	//Toggle Drive Style
+		//creates toggle drive button on left joystick
+		toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
+		// when this button is pressed the data is sent to the toggle Drive command where it will be used accordingly
+		toggleButton->WhenPressed(new cmdToggleDriveStyle());
+
+	//Stop Everything
+		stopEverything = new JoystickButton (driveStickL, LEFT_SIDE_DOWN);
+		stopEverything->WhenPressed(new cmdStopPneumatics());
+
+	//toteLifterSolenoid
+		lifterSolenoidLower = new JoystickButton(driveStickL, THUMB_BUTTON_DOWN);
+		lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand());
+		lifterSolenoidRaise = new JoystickButton(driveStickL, THUMB_BUTTON_UP);
+		lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
+
+	//toteGripperSolenoid
+		gripperSolenoidExtend = new JoystickButton(driveStickL, THUMB_BUTTON_RIGHT);
+		gripperSolenoidExtend->WhenPressed(new cmdExtendGripperCommand());
+		gripperSolenoidRetract = new JoystickButton(driveStickL, THUMB_BUTTON_LEFT);
+		gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
 
 
 //Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
-
-//toteLifterSolenoid
-	lifterSolenoidLower = new JoystickButton(driveStickL, THUMB_BUTTON_DOWN);
-	lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand());
-	lifterSolenoidRaise = new JoystickButton(driveStickL, THUMB_BUTTON_UP);
-	lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
-
-//toteGripperSolenoid
-	gripperSolenoidExtend = new JoystickButton(driveStickL, THUMB_BUTTON_RIGHT);
-	gripperSolenoidExtend->WhenPressed(new cmdExtendGripperCommand());
-	gripperSolenoidRetract = new JoystickButton(driveStickL, THUMB_BUTTON_LEFT);
-	gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
-
-
 
 
 }
