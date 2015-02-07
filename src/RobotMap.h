@@ -69,7 +69,7 @@ typedef enum{
 
 typedef enum{
 
-	DROP_TOTE_REED_SWITCH_I = 0,
+	DIO0 = 0,
 	DIO1,
 	DIO2,
 	DIO3,
@@ -78,7 +78,7 @@ typedef enum{
 	DIO6,
 	DIO7,
 	DIO8,
-	DIO9,
+	DROP_TOTE_REED_SWITCH_I,
 }DIGITAL_IO_T;
 
 

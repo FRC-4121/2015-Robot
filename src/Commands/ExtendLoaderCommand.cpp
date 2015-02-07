@@ -6,9 +6,11 @@ cmdExtendLoaderCommand::cmdExtendLoaderCommand(double timeout) {
 	Requires(toteLifter);
 }
 
+
 // Called just before this Command runs the first time
 void cmdExtendLoaderCommand::Initialize() {
 	printf("Initialize\n");
+	SetTimeout (2);
 }
 
 // Called repeatedly when this Command is scheduled to run
