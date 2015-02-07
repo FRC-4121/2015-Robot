@@ -9,8 +9,11 @@
  * @author ExampleAuthor
  */
 class cmdExtendLoaderCommand: public CommandBase {
+
+
+
 public:
-	cmdExtendLoaderCommand();
+	cmdExtendLoaderCommand(double timeout);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

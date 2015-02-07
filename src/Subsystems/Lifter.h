@@ -13,7 +13,7 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 
-	DigitalInput *retractLimitSwitch, *extendLimitSwitch;
+	DigitalInput *dropToteReedSwitch;
 	DoubleSolenoid *lifterSol, *gripperSol;
 	int counter;
 
@@ -29,6 +29,7 @@ public:
 	void RetractGripper();
 	void ExtendGripper();
 	void StopGripper();
+	bool ReadDropToteReedSwitch();
 	DoubleSolenoid::Value GetGripperPosition();
 };
 

@@ -35,20 +35,51 @@ typedef enum
 
 typedef enum{
 	//the name of each type should follow this format
+//	Joystick(R/L)_ButtonName_fButtonFunction - The f is NOT a typo
+	L_TRIGGER=1,//button 1
+	L_THUMB_BUTTON_DOWN_fLOWER_LIFTER, // Button Number 2
+	L_THUMB_BUTTON_UP_fRAISE_LIFTER,//button 3
+	L_THUMB_BUTTON_LEFT_fRETRACT_GRIPPER,//button 4
+	L_THUMB_BUTTON_RIGHT_fEXTEND_GRIPPER, // Button Number 5
+	L_LEFT_SIDE_UP_fTOGGLE,//button 6
+	L_LEFT_SIDE_DOWN_fSTOP_PNEUMATICS,//button 7
+	L_FRONT_SIDE_LEFT,// 8
+	L_FRONT_SIDE_RIGHT,//9
+	L_RIGHT_SIDE_DOWN, // Button Number 10
+	L_RIGHT_SIDE_UP,
+	L_NUM_OF_JOYSTICK_BUTTONS
+} JOYSTICK_LEFT_BUTTONS_t;
+
+typedef enum{
+	//the name of each type should follow this format
 //	ButtonName_fButtonFunction - The f is NOT a typo
-	TRIGGER=1,//button 1
-	THUMB_BUTTON_DOWN, // Button Number 2
-	THUMB_BUTTON_UP,//button 3
-	THUMB_BUTTON_LEFT,//button 4
-	THUMB_BUTTON_RIGHT, // Button Number 5
-	TRIGGER_fTOGGLE,//button 6
-	LEFT_SIDE_DOWN,//button 7
-	FRONT_SIDE_LEFT,// 8
-	FRONT_SIDE_RIGHT,//9
-	RIGHT_SIDE_DOWN, // Button Number 10
-	RIGHT_SIDE_UP,
-	NUM_OF_JOYSTICK_BUTTONS
-} JOYSTICE_BUTTONS_T;
+	R_TRIGGER=1,//button 1
+	R_THUMB_BUTTON_DOWN, // Button Number 2
+	R_THUMB_BUTTON_UP,//button 3
+	R_THUMB_BUTTON_LEFT,//button 4
+	R_THUMB_BUTTON_RIGHT, // Button Number 5
+	R_LEFT_SIDE_UP_fGYRO_RESET,//button 6
+	R_LEFT_SIDE_DOWN,//button 7
+	R_FRONT_SIDE_LEFT,// 8
+	R_FRONT_SIDE_RIGHT,//9
+	R_RIGHT_SIDE_DOWN, // Button Number 10
+	R_RIGHT_SIDE_UP,
+	R_NUM_OF_JOYSTICK_BUTTONS
+} JOYSTICK_RIGHT_BUTTONS_t;
+
+typedef enum{
+
+	DROP_TOTE_REED_SWITCH_I = 0,
+	DIO1,
+	DIO2,
+	DIO3,
+	DIO4,
+	DIO5,
+	DIO6,
+	DIO7,
+	DIO8,
+	DIO9,
+}DIGITAL_IO_T;
 
 
 #endif

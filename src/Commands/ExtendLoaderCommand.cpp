@@ -1,7 +1,7 @@
 #include "ExtendLoaderCommand.h"
 #include "../Subsystems/Lifter.h"
 
-cmdExtendLoaderCommand::cmdExtendLoaderCommand() {
+cmdExtendLoaderCommand::cmdExtendLoaderCommand(double timeout) {
 	// Use requires() here to declare subsystem dependencies
 	Requires(toteLifter);
 }
@@ -19,13 +19,13 @@ void cmdExtendLoaderCommand::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool cmdExtendLoaderCommand::IsFinished() {
-	printf("IsFinished\n");
-	return true;//loaderSubsystem->ReadLoaderExtendLimitSwitch();//IsTimedOut();
+	return toteLifter->ReadDropToteReedSwitch();
+
 }
 
 // Called once after isFinished returns true
 void cmdExtendLoaderCommand::End() {
-	
+	toteLifter->ExtendGripper();
 	//loaderSubsystem->StopLoader();
 //	extendRelay->Off();
 }
