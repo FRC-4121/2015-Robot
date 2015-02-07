@@ -17,14 +17,15 @@ Chassis::Chassis() : Subsystem("Chassis")
 	//Robot drive based on a definition of the motor configuration of each motor controller for the wheels
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
-//	//creates a new instance of Gyro
-//	gyro = new Gyro(0);
+
+	//	//creates a new instance of Gyro
+	//	gyro = new Gyro(0);
 
 	//start off in tank drive
 	mecanumDriveState = true;
 
-//	gyro->SetSensitivity(.007);
-//	gyro->Reset(); // Resets the gyro's heading
+	//	gyro->SetSensitivity(.007);
+	//	gyro->Reset(); // Resets the gyro's heading
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
@@ -53,7 +54,19 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	if (mecanumDriveState)
 	{
 		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  CommandBase::oi->getGyro()->GetAngle());
+		//the start to the speed control loop kind of
+		/*
+		if(stickR->GetX()!=oi->getFrontLeftEncoder()->GetRate())
+		{
+
+		}
+		if(stickR->GetY()!=(oi->getFrontLeftEncoder()->GetRate()/ //tangent of the roller angle))
+		{
+
+		}
+		 */
 	}
+
 	//else if the robot is currently in mecanum relying on x and y drive this will change the style to tank
 	else
 	{
@@ -62,6 +75,11 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 	}
 	//mecanum drive based on angles
 	//robotDrive->MecanumDrive_Polar(stickR->GetMagnitude(), stickR->GetDirectionDegrees(), stickL->GetMagnitude());
+
+
+
+
+
 }
 void Chassis::ToggleDrive()
 {
@@ -97,7 +115,7 @@ void Chassis::SlideRightAutonomous()
 	robotDrive->MecanumDrive_Cartesian(.5, 0, 0, CommandBase::oi->getGyro()->GetAngle());
 }
 
-*/
+ */
 void Chassis::StopAutonomous()
 {
 	//stops the motion of the robot

@@ -23,7 +23,7 @@ void AutoForward::Execute()
 bool AutoForward::IsFinished()
 {
 	bool retVal= false;
-	if(48<=oi->getFrontLeftEncoder()->GetDistance())//drives four feet at the moment since pulse proportion is done in inches
+	if(114<=oi->getFrontLeftEncoder()->GetDistance())//drives 9'6" at the moment since pulse proportion is done in inches
 	{
 		retVal=true;
 	}

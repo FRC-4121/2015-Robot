@@ -1,13 +1,13 @@
-#ifndef AutoBackward_H
-#define AutoBackward_H
+#ifndef AutoQuarterTurn_H
+#define AutoQuarterTurn_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class AutoBackward: public CommandBase
+class AutoQuarterTurn: public CommandBase
 {
 public:
-	AutoBackward();
+	AutoQuarterTurn();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

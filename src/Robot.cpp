@@ -1,6 +1,7 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
+#include "Commands/AutonomousRoutine.h"
 #include "CommandBase.h"
 
 class Robot: public IterativeRobot
@@ -19,6 +20,8 @@ private:
 		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
 		CommandBase::oi->getGyro()->InitGyro();
 		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
+
+		autonomousCommand= new AutonomousRoutine();
 	}
 	
 	void DisabledPeriodic()
@@ -28,13 +31,14 @@ private:
 
 	void AutonomousInit()
 	{
-		//if (autonomousCommand != NULL)
-			//autonomousCommand->Start();
+		if (autonomousCommand != NULL)
+			autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+
 	}
 
 	void TeleopInit()
