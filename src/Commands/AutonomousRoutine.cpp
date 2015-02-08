@@ -1,8 +1,8 @@
 #include "AutonomousRoutine.h"
 #include "Commands/AutoForward.h"
 #include "Commands/AutoQuarterTurn.h"
-#include "Commands/cmdRetractLoaderCommand.h"
-#include "Commands/cmdRetractGripperCommand.h"
+#include "Commands/RetractLoaderCommand.h"
+#include "Commands/RetractGripperCommand.h"
 
 
 

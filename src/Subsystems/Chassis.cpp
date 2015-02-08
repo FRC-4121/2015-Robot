@@ -17,15 +17,8 @@ Chassis::Chassis() : Subsystem("Chassis")
 	//Robot drive based on a definition of the motor configuration of each motor controller for the wheels
 	robotDrive = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
-
-	//	//creates a new instance of Gyro
-	//	gyro = new Gyro(0);
-
 	//start off in tank drive
 	mecanumDriveState = true;
-
-	//	gyro->SetSensitivity(.007);
-	//	gyro->Reset(); // Resets the gyro's heading
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();

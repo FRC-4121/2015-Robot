@@ -31,31 +31,16 @@ OI::OI()
 	//Left Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
 	//creates toggle drive button on left joystick
-	toggleButton = new JoystickButton(driveStickL, L_TRIGGER);
+	toggleButton = new JoystickButton(driveStickL, TRIGGER_fTOGGLE);
 	// when this button is pressed the data is sent to the toggle Drive command where it will be used accordingly
 	toggleButton->WhenPressed(new cmdToggleDriveStyle());
 
-	//Stop Everything
-		stopPneumatics = new JoystickButton (driveStickL, L_LEFT_SIDE_DOWN_fSTOP_PNEUMATICS);
-		stopPneumatics->WhenPressed(new cmdStopPneumatics());
-
-	//toteLifterSolenoid
-		lifterSolenoidLower = new JoystickButton(driveStickL, L_THUMB_BUTTON_DOWN_fLOWER_LIFTER);
-		lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand(2));
-		lifterSolenoidRaise = new JoystickButton(driveStickL, L_THUMB_BUTTON_UP_fRAISE_LIFTER);
-		lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
-
-	//toteGripperSolenoid
-		gripperSolenoidExtend = new JoystickButton(driveStickL, L_THUMB_BUTTON_RIGHT_fEXTEND_GRIPPER);
-		gripperSolenoidExtend->WhenPressed(new cmdExtendGripperCommand());
-		gripperSolenoidRetract = new JoystickButton(driveStickL, L_THUMB_BUTTON_LEFT_fRETRACT_GRIPPER);
-		gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
 
 
-//Right Joystick
+
+	//Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
-	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fGYRO_RESET);
-	gyroReset->WhenPressed(new cmdResetGyro());
+
 
 
 }

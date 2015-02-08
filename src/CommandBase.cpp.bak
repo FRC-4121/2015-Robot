@@ -32,6 +32,8 @@ void CommandBase::init()
 	oi = new OI();
 	mecanumChassis = new Chassis();
 	driverDisplay = new DataDisplay();
-	toteLifter = new Lifter();
+
+
+
 
 }
