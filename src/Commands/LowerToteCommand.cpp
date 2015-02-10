@@ -1,38 +1,46 @@
-#include "ExtendLoaderCommand.h"
+#include "LowerToteCommand.h"
 #include "../Subsystems/Lifter.h"
 
-cmdExtendLoaderCommand::cmdExtendLoaderCommand(){
-	// Use requires() here to declare subsystem dependencies
+cmdLowerToteCommand::cmdLowerToteCommand(double timeout)
+{
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
+	SetTimeout (timeout);
 	Requires(toteLifter);
 }
 
-
 // Called just before this Command runs the first time
-void cmdExtendLoaderCommand::Initialize() {
+void cmdLowerToteCommand::Initialize()
+{
 	printf("Initialize\n");
-	SetTimeout (2);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void cmdExtendLoaderCommand::Execute() {
-
+void cmdLowerToteCommand::Execute()
+{
 	toteLifter->LowerLifter();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool cmdExtendLoaderCommand::IsFinished() {
-	printf("IsFinished\n");
-	return true;//
+bool cmdLowerToteCommand::IsFinished()
+{
+	return toteLifter->ReadDropToteReedSwitch();
 }
 
+bool cmdLowerToteCommand::IsTimedOut(){
+	return true;
+}
+
+
 // Called once after isFinished returns true
-void cmdExtendLoaderCommand::End() {
+void cmdLowerToteCommand::End()
+{
 	toteLifter->ExtendGripper();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void cmdExtendLoaderCommand::Interrupted() {
+void cmdLowerToteCommand::Interrupted()
+{
 	printf("Interrupted\n");
-//	extendRelay->Off();
 }

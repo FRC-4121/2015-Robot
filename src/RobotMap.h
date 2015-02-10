@@ -54,7 +54,7 @@ typedef enum{
 	//the name of each type should follow this format
 //	ButtonName_fButtonFunction - The f is NOT a typo
 	R_TRIGGER=1,//button 1
-	R_THUMB_BUTTON_DOWN, // Button Number 2
+	R_THUMB_BUTTON_DOWN_fLOWER_TOTE, // Button Number 2
 	R_THUMB_BUTTON_UP,//button 3
 	R_THUMB_BUTTON_LEFT,//button 4
 	R_THUMB_BUTTON_RIGHT, // Button Number 5

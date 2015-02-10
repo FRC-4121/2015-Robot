@@ -22,6 +22,7 @@ public:
 	JoystickButton *gripperSolenoidExtend, *gripperSolenoidRetract;
 	JoystickButton *stopPneumatics;
 	JoystickButton *gyroReset;
+	JoystickButton *toteLower;
 
 	//Left Joystick
 	Joystick* getDriveStickL();

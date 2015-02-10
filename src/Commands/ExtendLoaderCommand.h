@@ -13,7 +13,7 @@ class cmdExtendLoaderCommand: public CommandBase {
 
 
 public:
-	cmdExtendLoaderCommand(double timeout);
+	cmdExtendLoaderCommand();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

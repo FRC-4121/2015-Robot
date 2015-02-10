@@ -3,6 +3,7 @@
 #include <Commands/RetractGripperCommand.h>
 #include <Commands/ExtendLoaderCommand.h>
 #include <Commands/RetractLoaderCommand.h>
+#include <Commands/LowerToteCommand.h>
 #include <Commands/cmdStopPneumatics.h>
 #include <Commands/cmdResetGyro.h>
 #include "OI.h"
@@ -18,9 +19,9 @@ OI::OI()
 
 
 	//Encoder
-	frontLeftEncoder = new Encoder(0,1,true);
+	frontLeftEncoder = new Encoder(2,3,true);
 	frontLeftEncoder->SetDistancePerPulse(0.075);
-	frontRightEncoder= new Encoder(2,3,true);
+	frontRightEncoder= new Encoder(0,1,true);
 	frontRightEncoder->SetDistancePerPulse(0.075);
 	backRightEncoder= new Encoder(4,5,true);
 	backRightEncoder->SetDistancePerPulse(0.075);
@@ -41,7 +42,7 @@ OI::OI()
 
 	//toteLifterSolenoid
 		lifterSolenoidLower = new JoystickButton(driveStickL, L_THUMB_BUTTON_DOWN_fLOWER_LIFTER);
-		lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand(2));
+		lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand);
 		lifterSolenoidRaise = new JoystickButton(driveStickL, L_THUMB_BUTTON_UP_fRAISE_LIFTER);
 		lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
 
@@ -54,8 +55,14 @@ OI::OI()
 
 //Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
+
+	//Reset Gyro
 	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fGYRO_RESET);
 	gyroReset->WhenPressed(new cmdResetGyro());
+
+	//Lower Tote (Lowers Lifter and Extends Gripper via Limit Switch)
+	toteLower = new JoystickButton(driveStickR, R_THUMB_BUTTON_DOWN_fLOWER_TOTE);
+	toteLower->WhenPressed(new cmdLowerToteCommand(3));
 
 
 }
