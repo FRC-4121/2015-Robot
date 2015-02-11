@@ -30,17 +30,17 @@ OI::OI()
 
 //XBOX Controller
 	xboxController= new Joystick(XBOXCONTROLLER);
-	xbox_toggleButton = new JoystickButton(xboxController, XBOX_LSTICKPRESS);
+	xbox_toggleButton = new JoystickButton(xboxController, XBOX_LSTICKPRESS_fTOGGLE);
 	xbox_toggleButton->WhenPressed(new cmdToggleDriveStyle());
-	xbox_lifterSolenoidLower = new JoystickButton(xboxController, XBOX_A);
+	xbox_lifterSolenoidLower = new JoystickButton(xboxController, XBOX_A_fLOWER_LIFTER);
 	xbox_lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand);
-	xbox_lifterSolenoidRaise = new JoystickButton(xboxController, XBOX_Y);
+	xbox_lifterSolenoidRaise = new JoystickButton(xboxController, XBOX_Y_fRAISE_LIFTER);
 	xbox_lifterSolenoidRaise->WhenPressed(new cmdRetractLoaderCommand());
-	xbox_gripperSolenoidExtend = new JoystickButton(xboxController, XBOX_B);
+	xbox_gripperSolenoidExtend = new JoystickButton(xboxController, XBOX_B_fEXTEND_GRIPPER);
 	xbox_gripperSolenoidExtend->WhenPressed(new cmdExtendGripperCommand());
-	xbox_gripperSolenoidRetract = new JoystickButton(xboxController, XBOX_X);
+	xbox_gripperSolenoidRetract = new JoystickButton(xboxController, XBOX_X_fRETRACT_GRIPPER);
 	xbox_gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
-	xbox_gyroReset= new JoystickButton(xboxController, XBOX_RSTICKPRESS);
+	xbox_gyroReset= new JoystickButton(xboxController, XBOX_RSTICKPRESS_fRESET_GYRO);
 	xbox_gyroReset->WhenPressed(new cmdResetGyro());
 
 
@@ -74,7 +74,7 @@ OI::OI()
 	driveStickR = new Joystick(JOYSTICKRIGHT);
 
 	//Reset Gyro
-	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fGYRO_RESET);
+	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fRESET_GYRO);
 	gyroReset->WhenPressed(new cmdResetGyro());
 
 	//Lower Tote (Lowers Lifter and Extends Gripper via Limit Switch)
