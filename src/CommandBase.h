@@ -28,6 +28,7 @@ public:
 	static DataDisplay *driverDisplay;
 	static AxisCamera *cameraDisplay;
 	static Lifter *toteLifter;
+	static SendableChooser *chooser;
 };
 
 #endif

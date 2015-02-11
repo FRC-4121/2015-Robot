@@ -1,15 +1,15 @@
-#ifndef AutoForward_H
-#define AutoForward_H
+#ifndef AutoTurn_H
+#define AutoTurn_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class AutoForward: public CommandBase
+class AutoTurn: public CommandBase
 {
 private:
-	float distance;
+	float xaxis, yaxis, zaxis, stopAngle;
 public:
-	AutoForward(float d);
+	AutoTurn(float x, float y, float z, float angle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

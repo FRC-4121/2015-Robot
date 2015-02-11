@@ -1,24 +1,28 @@
-#include "AutoQuarterTurn.h"
+#include "AutoTurn.h"
 
-AutoQuarterTurn::AutoQuarterTurn()
+AutoTurn::AutoTurn(float x, float y, float z, float angle)
 {
+	xaxis=x;
+	yaxis=y;
+	zaxis=z;
+	stopAngle=angle;
 	// Use Requires() here to declare subsystem dependencies
 	Requires(mecanumChassis);
 
 }
 
 // Called just before this Command runs the first time
-void AutoQuarterTurn::Initialize()
+void AutoTurn::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AutoQuarterTurn::Execute()
+void AutoTurn::Execute()
 {
 	//clockwise turn
 
-	mecanumChassis->AutoDrive(0,0,0.5);
+	mecanumChassis->AutoDrive(xaxis,yaxis,zaxis);
 
 
 
@@ -31,10 +35,10 @@ void AutoQuarterTurn::Execute()
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AutoQuarterTurn::IsFinished()
+bool AutoTurn::IsFinished()
 {
 
-	if(CommandBase::oi->getGyro()->GetAngle()<(float)90)
+	if(CommandBase::oi->getGyro()->GetAngle()<stopAngle)
 	{
 		return false;
 	}
@@ -45,7 +49,7 @@ bool AutoQuarterTurn::IsFinished()
 
 	/*
 	 * //counterclockwise code
-	/*
+	*
 	 * if(gyro->GetAngle()<270)
 	 * {
 	 * return true;
@@ -59,7 +63,7 @@ bool AutoQuarterTurn::IsFinished()
 }
 
 // Called once after isFinished returns true
-void AutoQuarterTurn::End()
+void AutoTurn::End()
 {
 	CommandBase::oi->getGyro()->Reset();//reset heading to zero so that it can drive forward normally
 
@@ -67,7 +71,7 @@ void AutoQuarterTurn::End()
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AutoQuarterTurn::Interrupted()
+void AutoTurn::Interrupted()
 {
 
 }

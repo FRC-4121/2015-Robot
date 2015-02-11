@@ -1,7 +1,9 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
-#include "Commands/AutonomousRoutine.h"
+#include "Commands/AutoGrabTurnRZone.h"
+#include "Commands/AutoGrabTurnLZone.h"
+#include "Commands/AutoGrabTrashStackTurnLZone.h"
 #include "CommandBase.h"
 #include "Commands/cmdStopPneumatics.h"
 
@@ -11,6 +13,8 @@ private:
 	Command *autonomousCommand;
 	Command *stopPneumaticsCommand;
 	LiveWindow *lw;
+	SendableChooser *chooser;
+
 
 	void RobotInit()
 	{
@@ -22,7 +26,15 @@ private:
 
 
 
-		autonomousCommand= new AutonomousRoutine();
+		//autonomousCommand= new AutoGrabTurnRZone();
+
+		chooser= new SendableChooser();
+		chooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
+		chooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
+		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
+		SmartDashboard::PutData("Autonomous Modes", chooser);
+
+
 	}
 	
 	void DisabledPeriodic()
@@ -36,6 +48,7 @@ private:
 		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
 		CommandBase::oi->getGyro()->InitGyro();
 		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
+		autonomousCommand=(Command *)chooser-> GetSelected();
 
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();

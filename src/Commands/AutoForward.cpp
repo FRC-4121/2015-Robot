@@ -1,7 +1,8 @@
 #include "AutoForward.h"
 
-AutoForward::AutoForward()
+AutoForward::AutoForward(float d)
 {
+	distance=d;
 	// Use Requires() here to declare subsystem dependencies
 	Requires(mecanumChassis);
 
@@ -23,7 +24,7 @@ void AutoForward::Execute()
 bool AutoForward::IsFinished()
 {
 	bool retVal= false;
-	if(132<=oi->getFrontLeftEncoder()->GetDistance())//drives 9'6" at the moment since pulse proportion is done in inches
+	if(distance<=oi->getFrontLeftEncoder()->GetDistance())//drives 9'6" at the moment since pulse proportion is done in inches
 	{
 		retVal=true;
 	}
