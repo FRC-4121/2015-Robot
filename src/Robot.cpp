@@ -20,9 +20,7 @@ private:
 
 		stopPneumaticsCommand= new cmdStopPneumatics();
 
-		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
-		CommandBase::oi->getGyro()->InitGyro();
-		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
+
 
 		autonomousCommand= new AutonomousRoutine();
 	}
@@ -34,6 +32,11 @@ private:
 
 	void AutonomousInit()
 	{
+
+		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
+		CommandBase::oi->getGyro()->InitGyro();
+		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
+
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}

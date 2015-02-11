@@ -17,36 +17,51 @@ void AutoQuarterTurn::Initialize()
 void AutoQuarterTurn::Execute()
 {
 	//clockwise turn
-	do
-	{
-		mecanumChassis->AutoDrive(0,0,1);
 
-	}while(CommandBase::oi->getGyro()->GetAngle()<90);
+	mecanumChassis->AutoDrive(0,0,0.5);
 
 
 
 	//counterclockwise code
 	/*
-	 * do
-	{
-		mecanumChassis->AutoDrive(0,0,-1);
+	 * 		mecanumChassis->AutoDrive(0,0,.5);
+		*/
 
-	}while(gyro->GetAngle()<270);
-	 */
-
-	CommandBase::oi->getGyro()->Reset();//reset heading to zero so that it can drive forward normally
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoQuarterTurn::IsFinished()
 {
-	return false;
+
+	if(CommandBase::oi->getGyro()->GetAngle()<(float)90)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+	/*
+	 * //counterclockwise code
+	/*
+	 * if(gyro->GetAngle()<270)
+	 * {
+	 * return true;
+	 * }
+	 * else
+	 * 	{
+	 * 			return false;
+	 * 				}
+	 */
+
 }
 
 // Called once after isFinished returns true
 void AutoQuarterTurn::End()
 {
+	CommandBase::oi->getGyro()->Reset();//reset heading to zero so that it can drive forward normally
 
 }
 

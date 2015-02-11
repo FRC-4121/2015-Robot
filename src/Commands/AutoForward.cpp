@@ -16,14 +16,14 @@ void AutoForward::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AutoForward::Execute()
 {
-	mecanumChassis->AutoDrive(0, .5, 0);//tells chassis to go forward at half speed
+	mecanumChassis->AutoDrive(0, -0.5, 0);//tells chassis to go forward at half speed
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoForward::IsFinished()
 {
 	bool retVal= false;
-	if(114<=oi->getFrontLeftEncoder()->GetDistance())//drives 9'6" at the moment since pulse proportion is done in inches
+	if(132<=oi->getFrontLeftEncoder()->GetDistance())//drives 9'6" at the moment since pulse proportion is done in inches
 	{
 		retVal=true;
 	}
