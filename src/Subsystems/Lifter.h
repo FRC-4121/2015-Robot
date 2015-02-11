@@ -13,7 +13,11 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 
+<<<<<<< HEAD
 	DigitalInput *retractLimitSwitch, *extendLimitSwitch;
+=======
+	DigitalInput *dropToteReedSwitch;
+>>>>>>> origin/encoder
 	DoubleSolenoid *lifterSol, *gripperSol;
 	int counter;
 
@@ -29,6 +33,10 @@ public:
 	void RetractGripper();
 	void ExtendGripper();
 	void StopGripper();
+<<<<<<< HEAD
+=======
+	bool ReadDropToteReedSwitch();
+>>>>>>> origin/encoder
 	DoubleSolenoid::Value GetGripperPosition();
 };
 

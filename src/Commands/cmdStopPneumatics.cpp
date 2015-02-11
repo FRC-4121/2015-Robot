@@ -1,44 +1,42 @@
-#include "RetractGripperCommand.h"
+#include "cmdStopPneumatics.h"
 #include "../Subsystems/Lifter.h"
-#include "../CommandBase.h"
 
-cmdRetractGripperCommand::cmdRetractGripperCommand()
+cmdStopPneumatics::cmdStopPneumatics()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-<<<<<<< HEAD
-=======
 	Requires(toteLifter);
->>>>>>> origin/encoder
 }
 
 // Called just before this Command runs the first time
-void cmdRetractGripperCommand::Initialize()
+void cmdStopPneumatics::Initialize()
 {
 	printf("Initialize\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
-void cmdRetractGripperCommand::Execute()
+void cmdStopPneumatics::Execute()
 {
-	toteLifter->RetractGripper();
+	toteLifter->StopLifter();
+	toteLifter->StopGripper();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool cmdRetractGripperCommand::IsFinished()
+bool cmdStopPneumatics::IsFinished()
 {
-	return true;
+	printf("IsFinished\n");
+			return true;
 }
 
 // Called once after isFinished returns true
-void cmdRetractGripperCommand::End()
+void cmdStopPneumatics::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void cmdRetractGripperCommand::Interrupted()
+void cmdStopPneumatics::Interrupted()
 {
-
+	printf("Interrupted\n");
 }

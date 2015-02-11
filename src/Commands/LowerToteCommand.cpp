@@ -1,44 +1,46 @@
-#include "RetractGripperCommand.h"
+#include "LowerToteCommand.h"
 #include "../Subsystems/Lifter.h"
-#include "../CommandBase.h"
 
-cmdRetractGripperCommand::cmdRetractGripperCommand()
+cmdLowerToteCommand::cmdLowerToteCommand(double timeout)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-<<<<<<< HEAD
-=======
+	SetTimeout (timeout);
 	Requires(toteLifter);
->>>>>>> origin/encoder
 }
 
 // Called just before this Command runs the first time
-void cmdRetractGripperCommand::Initialize()
+void cmdLowerToteCommand::Initialize()
 {
 	printf("Initialize\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
-void cmdRetractGripperCommand::Execute()
+void cmdLowerToteCommand::Execute()
 {
-	toteLifter->RetractGripper();
+	toteLifter->LowerLifter();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool cmdRetractGripperCommand::IsFinished()
+bool cmdLowerToteCommand::IsFinished()
 {
+	return toteLifter->ReadDropToteReedSwitch();
+}
+
+bool cmdLowerToteCommand::IsTimedOut(){
 	return true;
 }
 
-// Called once after isFinished returns true
-void cmdRetractGripperCommand::End()
-{
 
+// Called once after isFinished returns true
+void cmdLowerToteCommand::End()
+{
+	toteLifter->ExtendGripper();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void cmdRetractGripperCommand::Interrupted()
+void cmdLowerToteCommand::Interrupted()
 {
-
+	printf("Interrupted\n");
 }

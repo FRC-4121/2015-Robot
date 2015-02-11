@@ -7,6 +7,10 @@ Lifter::Lifter() : Subsystem("LoaderSubsystem") {
 	lifterSol = new DoubleSolenoid(1, 0);
 	gripperSol= new DoubleSolenoid(2, 3);
 	counter=0;
+<<<<<<< HEAD
+=======
+	dropToteReedSwitch = new DigitalInput(DROP_TOTE_REED_SWITCH_I);
+>>>>>>> origin/encoder
 }
     
 void Lifter::InitDefaultCommand() {
@@ -40,6 +44,18 @@ void  Lifter::StopGripper(){
 	gripperSol->Set(gripperSol->kOff);
 }
 
+<<<<<<< HEAD
 DoubleSolenoid::Value Lifter::GetGripperPosition(){
 	return gripperSol->Get();
 }
+=======
+bool Lifter::ReadDropToteReedSwitch(){
+	return dropToteReedSwitch->Get();
+}
+
+DoubleSolenoid::Value Lifter::GetGripperPosition(){
+	return gripperSol->Get();
+}
+
+
+>>>>>>> origin/encoder

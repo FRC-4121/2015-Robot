@@ -5,6 +5,10 @@
 cmdRetractLoaderCommand::cmdRetractLoaderCommand() {
 	// Use requires() here to declare subsystem dependencies
 	//requires(examplesubsystem)
+<<<<<<< HEAD
+=======
+	Requires(toteLifter);
+>>>>>>> origin/encoder
 }
 
 // Called just before this Command runs the first time

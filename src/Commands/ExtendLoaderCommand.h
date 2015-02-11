@@ -9,6 +9,12 @@
  * @author ExampleAuthor
  */
 class cmdExtendLoaderCommand: public CommandBase {
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> origin/encoder
 public:
 	cmdExtendLoaderCommand();
 	virtual void Initialize();
