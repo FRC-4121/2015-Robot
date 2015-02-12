@@ -21,7 +21,7 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 		AddSequential(new cmdRetractGripperCommand());//clamp on to new tote base
 
 		AddParallel(new cmdRetractLoaderCommand());//lift the tote
-		AddSequential(new AutoTurn(0,0,-0.5, 270));//turn left
+		AddSequential(new AutoTurn(0,0,-0.5, -90));//turn left
 
 		AddSequential(new AutoForward(132));//drive to auto zone;
 
