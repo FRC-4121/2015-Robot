@@ -38,7 +38,7 @@ void AutoTurn::Execute()
 bool AutoTurn::IsFinished()
 {
 
-	if(CommandBase::oi->getGyro()->GetAngle()<stopAngle)
+	if(abs(CommandBase::oi->getGyro()->GetAngle())<abs(stopAngle))
 	{
 		return false;
 	}
