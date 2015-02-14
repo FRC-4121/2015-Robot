@@ -1,4 +1,5 @@
 #include <Commands/cmdToggleDriveStyle.h>
+#include <Commands/cmdTogglePolar.h>
 #include <Commands/ExtendGripperCommand.h>
 #include <Commands/RetractGripperCommand.h>
 #include <Commands/ExtendLoaderCommand.h>
@@ -30,8 +31,8 @@ OI::OI()
 
 //XBOX Controller
 	xboxController= new Joystick(XBOXCONTROLLER);
-	xbox_toggleButton = new JoystickButton(xboxController, XBOX_LSTICKPRESS_fTOGGLE);
-	xbox_toggleButton->WhenPressed(new cmdToggleDriveStyle());
+	xbox_toggleMechanumButton = new JoystickButton(xboxController, XBOX_LSTICKPRESS_fTOGGLE_MECHANUM);
+	xbox_toggleMechanumButton->WhenPressed(new cmdToggleDriveStyle());
 	xbox_lifterSolenoidLower = new JoystickButton(xboxController, XBOX_A_fLOWER_LIFTER);
 	xbox_lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand);
 	xbox_lifterSolenoidRaise = new JoystickButton(xboxController, XBOX_Y_fRAISE_LIFTER);
@@ -49,12 +50,15 @@ OI::OI()
 //Left Joystick
 	driveStickL = new Joystick(JOYSTICKLEFT);
 	//creates toggle drive button on left joystick
-	toggleButton = new JoystickButton(driveStickL, L_LEFT_SIDE_UP_fTOGGLE);
+	toggleMechanumButton = new JoystickButton(driveStickL, L_LEFT_SIDE_UP_fTOGGLE_MECHANUM);
 	// when this button is pressed the data is sent to the toggle Drive command where it will be used accordingly
-	toggleButton->WhenPressed(new cmdToggleDriveStyle());
+	toggleMechanumButton->WhenPressed(new cmdToggleDriveStyle());
+
+	togglePolarButton = new JoystickButton(driveStickL, L_LEFT_SIDE_DOWN_fTOGGLE_POLAR);
+	togglePolarButton->WhenPressed(new cmdTogglePolar());
 
 	//Stop Everything
-		stopPneumatics = new JoystickButton (driveStickL, L_LEFT_SIDE_DOWN_fSTOP_PNEUMATICS);
+		stopPneumatics = new JoystickButton (driveStickL, L_RIGHT_SIDE_UP_fSTOP_PNEUMATICS);
 		stopPneumatics->WhenPressed(new cmdStopPneumatics());
 
 	//toteLifterSolenoid

@@ -19,6 +19,8 @@ Chassis::Chassis() : Subsystem("Chassis")
 
 	//start off in tank drive
 	mecanumDriveState = true;
+	polarDriveState=false;
+	gyroAngle= CommandBase::oi->getGyro()->GetAngle();
 
 	//creates a new instance of Accelerometer
 	accel = new BuiltInAccelerometer();
@@ -43,6 +45,14 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 
 	//if the robot is currently in tank drive this will change the style to mecanum relying on x and y
 
+	if(polarDriveState)
+	{
+		gyroAngle=0;
+	}
+	else
+	{
+		gyroAngle= CommandBase::oi->getGyro()->GetAngle();
+	}
 
 	if (mecanumDriveState)
 	{
@@ -79,6 +89,10 @@ void Chassis::ToggleDrive()
 	//makes the boolean the opposite of what it previously was
 	//ex: if TankDriveState is true, this line of code will make it !(not) true so false
 	mecanumDriveState=!mecanumDriveState;
+}
+void Chassis::TogglePolar()
+{
+	polarDriveState=!polarDriveState;
 }
 
 

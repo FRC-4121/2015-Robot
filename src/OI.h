@@ -17,7 +17,8 @@ public:
 
 	//Right JoyStick
 	Joystick* getDriveStickR();
-	JoystickButton *toggleButton, *xbox_toggleButton; // Button 1 is the trigger for toggling the drive state
+	JoystickButton *toggleMechanumButton, *xbox_toggleMechanumButton; // Button 1 is the trigger for toggling the drive state
+	JoystickButton *togglePolarButton;
 	JoystickButton *lifterSolenoidLower, *lifterSolenoidRaise, *xbox_lifterSolenoidLower, *xbox_lifterSolenoidRaise;
 	JoystickButton *gripperSolenoidExtend, *gripperSolenoidRetract, *xbox_gripperSolenoidExtend, *xbox_gripperSolenoidRetract;
 	JoystickButton *stopPneumatics, *xbox_stopPneumatics;

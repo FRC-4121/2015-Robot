@@ -12,7 +12,8 @@ private:
 	Talon *frontLeftTalon, *frontRightTalon, *rearLeftTalon, *rearRightTalon;
 	RobotDrive *robotDrive;
 //	Gyro *gyro;
-	bool mecanumDriveState;
+	bool mecanumDriveState, polarDriveState;
+	double gyroAngle;
 	Accelerometer *accel;
 
 
@@ -29,6 +30,7 @@ public:
 	void AutoDrive(float x, float y, float z);
 	void StopAutonomous();
 	void ToggleDrive();
+	void TogglePolar();
 	bool GetDriveState();
 };
 
