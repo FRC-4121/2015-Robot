@@ -13,6 +13,8 @@ Chassis* CommandBase::mecanumChassis = NULL;
 DataDisplay* CommandBase::driverDisplay = NULL;
 Lifter* CommandBase::toteLifter = NULL;
 SendableChooser* CommandBase::chooser= NULL;
+ReservoirChange CommandBase::reservoirChanger=NULL;
+
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)

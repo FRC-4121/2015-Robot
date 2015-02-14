@@ -2,6 +2,7 @@
 #define COMMAND_BASE_H
 
 #include <Subsystems/Lifter.h>
+#include <Subsystems/ReservoirChange.h>
 #include <string>
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
@@ -29,6 +30,7 @@ public:
 	static AxisCamera *cameraDisplay;
 	static Lifter *toteLifter;
 	static SendableChooser *chooser;
+	static ReservoirChange *reservoirChanger;
 };
 
 #endif

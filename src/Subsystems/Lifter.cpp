@@ -1,12 +1,12 @@
 #include <Subsystems/Lifter.h>
 #include "../Robotmap.h"
 #include "DoubleSolenoid.h"
-Lifter::Lifter() : Subsystem("LoaderSubsystem") {
+Lifter::Lifter() : Subsystem("LifterSubsystem") {
 	//this is the constructor
 
 	lifterSol = new DoubleSolenoid(1, 0);
 	gripperSol= new DoubleSolenoid(2, 3);
-	counter=0;
+
 
 
 }

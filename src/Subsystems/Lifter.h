@@ -15,7 +15,6 @@ private:
 
 
 	DoubleSolenoid *lifterSol, *gripperSol;
-	int counter;
 	int gripperSolenoidState, lifterSolenoidState;
 
 public:
