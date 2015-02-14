@@ -21,9 +21,9 @@ public:
 	JoystickButton *togglePolarButton;
 	JoystickButton *lifterSolenoidLower, *lifterSolenoidRaise, *xbox_lifterSolenoidLower, *xbox_lifterSolenoidRaise;
 	JoystickButton *gripperSolenoidExtend, *gripperSolenoidRetract, *xbox_gripperSolenoidExtend, *xbox_gripperSolenoidRetract;
-	JoystickButton *stopPneumatics, *xbox_stopPneumatics;
+	JoystickButton *stopPneumatics;
 	JoystickButton *gyroReset, *xbox_gyroReset;
-	JoystickButton *toteLower;
+//	JoystickButton *toteLower;
 
 	//Left Joystick
 	Joystick* getDriveStickL();

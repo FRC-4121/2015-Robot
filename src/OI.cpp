@@ -4,7 +4,6 @@
 #include <Commands/RetractGripperCommand.h>
 #include <Commands/ExtendLoaderCommand.h>
 #include <Commands/RetractLoaderCommand.h>
-#include <Commands/LowerToteCommand.h>
 #include <Commands/cmdStopPneumatics.h>
 #include <Commands/cmdResetGyro.h>
 #include "OI.h"
