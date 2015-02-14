@@ -32,6 +32,7 @@ public:
 	void ToggleDrive();
 	void TogglePolar();
 	bool GetDriveState();
+	bool GetPolarDriveState();
 };
 
 #endif

@@ -20,7 +20,7 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 	AddSequential(new waitUntilFullyRetracted());//checks if loader fully retracted
 
 
-	AddSequential(new AutoForward(24));//drives forward with bin till overtop the tote
+	AddParallel(new AutoForward(24));//drives forward with bin till overtop the tote
 
 	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
 
@@ -32,10 +32,4 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 	AddSequential(new AutoTurn(0,0,-0.5, -80));//turn left
 
 	AddSequential(new AutoForward(132));//drive to auto zone;
-
-
-
-
-
-
 }

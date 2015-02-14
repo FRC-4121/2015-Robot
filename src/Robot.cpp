@@ -4,6 +4,7 @@
 #include "Commands/AutoGrabTurnRZone.h"
 #include "Commands/AutoGrabTurnLZone.h"
 #include "Commands/AutoGrabTrashStackTurnLZone.h"
+#include "Commands/AutoGrabAllTotes.h"
 #include "CommandBase.h"
 #include "Commands/cmdStopPneumatics.h"
 
@@ -24,6 +25,9 @@ private:
 
 		stopPneumaticsCommand= new cmdStopPneumatics();
 
+		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
+		CommandBase::oi->getGyro()->InitGyro();
+		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
 
 
 		//autonomousCommand= new AutoGrabTurnRZone();
@@ -32,6 +36,7 @@ private:
 		chooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
 		chooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
 		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
+		chooser->AddObject("stack all totees", new AutoGrabAllTotes());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 
@@ -66,6 +71,7 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
 	}

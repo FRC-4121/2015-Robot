@@ -54,9 +54,10 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 		gyroAngle= CommandBase::oi->getGyro()->GetAngle();
 	}
 
+
 	if (mecanumDriveState)
 	{
-		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  CommandBase::oi->getGyro()->GetAngle());
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  gyroAngle);
 		//the start to the speed control loop kind of
 		/*
 		if(stickR->GetX()!=oi->getFrontLeftEncoder()->GetRate())
@@ -131,5 +132,9 @@ void Chassis::StopAutonomous()
 bool Chassis::GetDriveState()
 {
 	return mecanumDriveState;
+}
+bool Chassis::GetPolarDriveState()
+{
+	return polarDriveState;
 }
 

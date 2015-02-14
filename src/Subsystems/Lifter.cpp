@@ -29,6 +29,12 @@ void  Lifter::StopLifter(){
 	lifterSolenoidState=0;
 }
 
+
+DoubleSolenoid::Value Lifter::GetLifterPosition(){
+ 	return lifterSol->Get();
+}
+
+
 bool Lifter::GetLifterSolenoidState()
 {
 	return lifterSolenoidState;
@@ -48,6 +54,11 @@ void  Lifter::StopGripper(){
 	gripperSol->Set(gripperSol->kOff);
 	gripperSolenoidState=0;
 }
+
+DoubleSolenoid::Value Lifter::GetGripperPosition(){
+	return gripperSol->Get();
+}
+
 
 bool Lifter::GetGripperSolenoidState()
 {
