@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author Vaughn
+ * @author Stahl -Suck it James
  */
 class Lifter: public Subsystem {
 private:
@@ -16,6 +16,7 @@ private:
 
 	DoubleSolenoid *lifterSol, *gripperSol;
 	int counter;
+	int gripperSolenoidState, lifterSolenoidState;
 
 public:
 	Lifter();
@@ -25,12 +26,11 @@ public:
 	void RaiseLifter();
 	void LowerLifter();
 	void StopLifter();
-	DoubleSolenoid::Value GetLifterPosition();
+	bool GetLifterSolenoidState();
 	void RetractGripper();
 	void ExtendGripper();
 	void StopGripper();
-
-	DoubleSolenoid::Value GetGripperPosition();
+	bool GetGripperSolenoidState();
 };
 
 #endif

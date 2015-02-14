@@ -3,6 +3,7 @@
 #include "OI.h"
 #include "../CommandBase.h"
 #include <Commands/DataDashboardCommand.h>
+#include "Subsystems/Lifter.h"
 
 DataDisplay::DataDisplay() :
 		Subsystem("DataDisplay")
@@ -23,6 +24,32 @@ void DataDisplay::InitDefaultCommand()
 
 void  DataDisplay::DisplayAll()
 {
+	if(CommandBase::toteLifter->GetGripperSolenoidState()==0)
+	{
+		SmartDashboard::PutString("Gripper Solenoid State", "Off");
+	}
+	else if(CommandBase::toteLifter->GetGripperSolenoidState()==1)
+	{
+		SmartDashboard::PutString("Gripper Solenoid State", "Forward");
+	}
+	else
+	{
+		SmartDashboard::PutString("Gripper Solenoid State", "Reverse");
+	}
+
+
+	if(CommandBase::toteLifter->GetLifterSolenoidState()==0)
+	{
+		SmartDashboard::PutString("Lifter Solenoid State", "Off");
+	}
+	else if(CommandBase::toteLifter->GetLifterSolenoidState()==1)
+	{
+		SmartDashboard::PutString("Lifter Solenoid State", "Forward");
+	}
+	else
+	{
+		SmartDashboard::PutString("Lifter Solenoid State", "Reverse");
+	}
 
 	SmartDashboard::PutNumber("Gyro: ", CommandBase::oi->getGyro()->GetAngle());
 	SmartDashboard::PutBoolean("Mecanum Drive", CommandBase::mecanumChassis->GetDriveState());
