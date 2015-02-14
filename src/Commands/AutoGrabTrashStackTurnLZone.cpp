@@ -8,20 +8,23 @@
 
 AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 {
+
+	//need to do limit switch to know when loader fully retracted before driving forward to tote
+
 	AddSequential(new cmdRetractGripperCommand());//clamp onto bin
 
 		AddSequential(new cmdRetractLoaderCommand());//lift the bin
 
 		AddSequential(new AutoForward(24));//drives forward with bin till overtop the tote
 
-		AddSequential(new cmdExtendGripperCommand());//drop bin onto tote
+		AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
 
-		AddSequential(new cmdExtendLoaderCommand()); //drop loader to the ground
+		AddSequential(new cmdExtendGripperCommand());//drop bin onto tote
 
 		AddSequential(new cmdRetractGripperCommand());//clamp on to new tote base
 
 		AddParallel(new cmdRetractLoaderCommand());//lift the tote
-		AddSequential(new AutoTurn(0,0,-0.5, -90));//turn left
+		AddSequential(new AutoTurn(0,0,-0.5, -80));//turn left
 
 		AddSequential(new AutoForward(132));//drive to auto zone;
 

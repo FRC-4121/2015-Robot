@@ -13,7 +13,7 @@ AutoGrabTurnRZone::AutoGrabTurnRZone()
 	AddSequential(new cmdRetractGripperCommand());//clamp onto tote or bin
 
 	AddParallel(new cmdRetractLoaderCommand());//lift the tote or bin while turning 90 degrees
-	AddSequential(new AutoTurn(0,0,0.5,90));//the direction it rotates depends on where we start
+	AddSequential(new AutoTurn(0,0,0.5,80));//the direction it rotates depends on where we start
 										//(depends on which code is commented out in the command)
 
 	AddSequential(new AutoForward(132));//drive the 9'6" forward over ramp
