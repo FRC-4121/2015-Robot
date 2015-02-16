@@ -6,6 +6,8 @@
 #include "Commands/AutoGrabTrashStackTurnLZone.h"
 #include "CommandBase.h"
 #include "Commands/cmdStopPneumatics.h"
+#include "Commands/cmdToggleCompressor.h"
+#include "Commands/cmdToggleReservoir.h"
 
 class Robot: public IterativeRobot
 {
@@ -13,7 +15,8 @@ private:
 	Command *autonomousCommand;
 	Command *stopPneumaticsCommand;
 	LiveWindow *lw;
-	SendableChooser *chooser;
+	SendableChooser *autonomousChooser, *reservoirChooser;
+	Compressor *mainCompressor;
 
 
 	void RobotInit()
@@ -22,17 +25,24 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		stopPneumaticsCommand= new cmdStopPneumatics();
-
+		CommandBase::toteLifter->ExtendGripper();
+		CommandBase::toteLifter->LowerLifter();
+		CommandBase::reservoirChanger->UseFirstReservoir();
+		CommandBase::reservoirChanger->FillSecondReservoir();
 
 
 		//autonomousCommand= new AutoGrabTurnRZone();
 
-		chooser= new SendableChooser();
-		chooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
-		chooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
-		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
-		SmartDashboard::PutData("Autonomous Modes", chooser);
+		autonomousChooser= new SendableChooser();
+		autonomousChooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
+		autonomousChooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
+		autonomousChooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
+		SmartDashboard::PutData("Autonomous Modes", autonomousChooser);
+
+		reservoirChooser= new SendableChooser();
+		reservoirChooser->AddDefault("Use First Reservoir/ Fill Second Reservoir");
+		reservoirChooser->AddObject("Use First Reservoir/ Fill First Reservoir", new cmdToggleCompressor);
+
 
 
 	}
@@ -44,6 +54,9 @@ private:
 
 	void AutonomousInit()
 	{
+
+		CommandBase::reservoirChanger->UseFirstReservoir();
+		CommandBase::reservoirChanger->FillSecondReservoir();
 
 		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
 		CommandBase::oi->getGyro()->InitGyro();
@@ -62,6 +75,9 @@ private:
 
 	void TeleopInit()
 	{
+
+		CommandBase::reservoirChanger->UseFirstReservoir();
+		CommandBase::reservoirChanger->FillSecondReservoir();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
