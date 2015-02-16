@@ -7,7 +7,7 @@
 class waitUntilFullyRetracted: public CommandBase
 {
 private:
-	DigitalInput *fullyRetracted;
+
 public:
 	waitUntilFullyRetracted();
 	void Initialize();

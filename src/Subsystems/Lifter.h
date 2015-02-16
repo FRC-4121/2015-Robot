@@ -15,7 +15,7 @@ private:
 
 
 	DoubleSolenoid *lifterSol, *gripperSol;
-	int counter;
+	DigitalInput *fullyRetractedSwitch;
 	int gripperSolenoidState, lifterSolenoidState;
 
 public:
@@ -33,6 +33,7 @@ public:
 	void StopGripper();
 	DoubleSolenoid::Value GetGripperPosition();
 	bool GetGripperSolenoidState();
+	bool ReadFullyRetractedSwitch();
 };
 
 #endif

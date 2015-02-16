@@ -6,7 +6,7 @@ Lifter::Lifter() : Subsystem("LoaderSubsystem") {
 
 	lifterSol = new DoubleSolenoid(1, 0);
 	gripperSol= new DoubleSolenoid(2, 3);
-	counter=0;
+	fullyRetractedSwitch= new DigitalInput(LOADER_FULLY_RETRACT_REED_SWITCH_I);
 
 
 }
@@ -59,9 +59,14 @@ DoubleSolenoid::Value Lifter::GetGripperPosition(){
 	return gripperSol->Get();
 }
 
-
 bool Lifter::GetGripperSolenoidState()
 {
 	return gripperSolenoidState;
 }
+
+
+bool Lifter::ReadFullyRetractedSwitch(){
+	return fullyRetractedSwitch->Get();
+}
+
 
