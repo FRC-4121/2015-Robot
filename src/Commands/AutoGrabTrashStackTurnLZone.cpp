@@ -6,6 +6,7 @@
 #include "Commands/AutoTurn.h"
 #include "Commands/ExtendGripperCommand.h"
 #include "Commands/ExtendLoaderCommand.h"
+#include "Commands/Delay.h"
 #include "../Robotmap.h"
 
 AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
@@ -15,6 +16,8 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 	//need to do limit switch to know when loader fully retracted before driving forward to tote
 
 	AddSequential(new cmdRetractGripperCommand());//clamp onto bin
+
+	AddSequential(new Delay(1));
 
 	AddSequential(new cmdRetractLoaderCommand());//lift the bin
 	AddSequential(new waitUntilFullyRetracted());//checks if loader fully retracted
@@ -26,7 +29,11 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 
 	AddSequential(new cmdExtendGripperCommand());//drop bin onto tote
 
+	AddSequential(new Delay(3));
+
 	AddSequential(new cmdRetractGripperCommand());//clamp on to new tote base
+
+	AddSequential(new Delay(1));
 
 	AddParallel(new cmdRetractLoaderCommand());//lift the tote
 	AddSequential(new AutoTurn(0,0,-0.5, -80));//turn left
