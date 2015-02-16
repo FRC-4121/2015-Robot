@@ -18,9 +18,11 @@ public:
 	void FillFirstReservoir();
 	void FillSecondReservoir();
 	void FillNeitherReservoir();
+	int GetCompressorSolenoidState();
 	void UseFirstReservoir();
 	void UseSecondReservoir();
 	void UseNeitherReservoir();
+	int GetReservoirSolenoidState();
 };
 
 #endif

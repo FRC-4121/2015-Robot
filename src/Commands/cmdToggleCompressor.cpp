@@ -1,7 +1,7 @@
-#include "cmdToggleAirTanks.h"
+#include "cmdToggleCompressor.h"
 #include "../Subsystems/ReservoirChange.h"
 
-cmdToggleAirTanks::cmdToggleAirTanks()
+cmdToggleCompressor::cmdToggleCompressor()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -9,32 +9,39 @@ cmdToggleAirTanks::cmdToggleAirTanks()
 }
 
 // Called just before this Command runs the first time
-void cmdToggleAirTanks::Initialize()
+void cmdToggleCompressor::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void cmdToggleAirTanks::Execute()
+void cmdToggleCompressor::Execute()
 {
-
+	if(reservoirChanger->GetCompressorSolenoidState==-1)
+		{
+			reservoirChanger->FillSecondReservoir();
+		}
+		else
+		{
+			reservoirChanger->FillFirstReservoir();
+		}
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool cmdToggleAirTanks::IsFinished()
+bool cmdToggleCompressor::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
-void cmdToggleAirTanks::End()
+void cmdToggleCompressor::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void cmdToggleAirTanks::Interrupted()
+void cmdToggleCompressor::Interrupted()
 {
 
 }

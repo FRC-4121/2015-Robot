@@ -4,6 +4,7 @@
 #include "../CommandBase.h"
 #include <Commands/DataDashboardCommand.h>
 #include "Subsystems/Lifter.h"
+#include "Subsystems/ReservoirChange.h"
 
 DataDisplay::DataDisplay() :
 		Subsystem("DataDisplay")
@@ -24,32 +25,6 @@ void DataDisplay::InitDefaultCommand()
 
 void  DataDisplay::DisplayAll()
 {
-	if(CommandBase::toteLifter->GetGripperSolenoidState()==0)
-	{
-		SmartDashboard::PutString("Gripper Solenoid State", "Off");
-	}
-	else if(CommandBase::toteLifter->GetGripperSolenoidState()==1)
-	{
-		SmartDashboard::PutString("Gripper Solenoid State", "Forward");
-	}
-	else
-	{
-		SmartDashboard::PutString("Gripper Solenoid State", "Reverse");
-	}
-
-
-	if(CommandBase::toteLifter->GetLifterSolenoidState()==0)
-	{
-		SmartDashboard::PutString("Lifter Solenoid State", "Off");
-	}
-	else if(CommandBase::toteLifter->GetLifterSolenoidState()==1)
-	{
-		SmartDashboard::PutString("Lifter Solenoid State", "Forward");
-	}
-	else
-	{
-		SmartDashboard::PutString("Lifter Solenoid State", "Reverse");
-	}
 
 	SmartDashboard::PutNumber("Gyro: ", CommandBase::oi->getGyro()->GetAngle());
 	SmartDashboard::PutBoolean("Mecanum Drive", CommandBase::mecanumChassis->GetDriveState());
@@ -59,5 +34,8 @@ void  DataDisplay::DisplayAll()
 	SmartDashboard::PutNumber("Front Right Encoder Speed:", CommandBase::oi->getFrontRightEncoder()->GetRate());
 	SmartDashboard::PutNumber("Back Left Encoder Speed:", CommandBase::oi->getBackLeftEncoder()->GetRate());
 	SmartDashboard::PutNumber("Back Right Encoder Speed:", CommandBase::oi->getBackRightEncoder()->GetRate());
-
+	SmartDashboard::PutNumber("Gripper Solenoid State:", CommandBase::toteLifter->GetGripperSolenoidState());
+	SmartDashboard::PutNumber("Lifter Solenoid State:", CommandBase::toteLifter->GetLifterSolenoidState());
+	SmartDashboard::PutNumber("Compressor Solenoid State:", CommandBase::reservoirChanger->GetCompressorSolenoidState());
+	SmartDashboard::PutNumber("Reservoir Solenoid State:", CommandBase::reservoirChanger->GetReservoirSolenoidState());
 }

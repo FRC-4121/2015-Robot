@@ -56,7 +56,7 @@ void Chassis::DriveWithJoystick(Joystick *stickL, Joystick *stickR)
 
 	if (mecanumDriveState)
 	{
-		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(),  CommandBase::oi->getGyro()->GetAngle());
+		robotDrive->MecanumDrive_Cartesian(stickR->GetX(),stickR->GetY(), stickL->GetX(), gyroAngle);
 		//the start to the speed control loop kind of
 		/*
 		if(stickR->GetX()!=oi->getFrontLeftEncoder()->GetRate())

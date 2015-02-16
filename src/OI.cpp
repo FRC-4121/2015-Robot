@@ -6,6 +6,8 @@
 #include <Commands/RetractLoaderCommand.h>
 #include <Commands/cmdStopPneumatics.h>
 #include <Commands/cmdResetGyro.h>
+#include <Commands/cmdToggleReservoir.h>
+#include <Commands/cmdToggleCompressor.h>
 #include "OI.h"
 #include "RobotMap.h"
 
@@ -56,10 +58,6 @@ OI::OI()
 	togglePolarButton = new JoystickButton(driveStickL, L_LEFT_SIDE_DOWN_fTOGGLE_POLAR);
 	togglePolarButton->WhenPressed(new cmdTogglePolar());
 
-	//Stop Everything
-		stopPneumatics = new JoystickButton (driveStickL, L_RIGHT_SIDE_UP_fSTOP_PNEUMATICS);
-		stopPneumatics->WhenPressed(new cmdStopPneumatics());
-
 	//toteLifterSolenoid
 		lifterSolenoidLower = new JoystickButton(driveStickL, L_THUMB_BUTTON_DOWN_fLOWER_LIFTER);
 		lifterSolenoidLower->WhenPressed(new cmdExtendLoaderCommand);
@@ -72,6 +70,12 @@ OI::OI()
 		gripperSolenoidRetract = new JoystickButton(driveStickL, L_THUMB_BUTTON_LEFT_fRETRACT_GRIPPER);
 		gripperSolenoidRetract->WhenPressed(new cmdRetractGripperCommand());
 
+	//Reservoir & Compressor Toggles
+		toggleCompressor= new JoystickButton(driveStickL, L_RIGHT_SIDE_UP_fTOGGLE_COMPRESSOR);
+		toggleCompressor->WhenPressed(new cmdToggleCompressor);
+		toggleReservoir= new JoystickButton(driveStickL, L_RIGHT_SIDE_DOWN_fTOGGLE_RESERVOIR);
+		toggleReservoir->WhenPressed(new cmdToggleReservoir);
+
 
 //Right Joystick
 	driveStickR = new Joystick(JOYSTICKRIGHT);
@@ -80,9 +84,11 @@ OI::OI()
 	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fRESET_GYRO);
 	gyroReset->WhenPressed(new cmdResetGyro());
 
-	//Lower Tote (Lowers Lifter and Extends Gripper via Limit Switch)
-//	toteLower = new JoystickButton(driveStickR, R_THUMB_BUTTON_DOWN_fLOWER_TOTE);
-//	toteLower->WhenPressed(new cmdLowerToteCommand(3))
+	/* Comment out for time being because pneumatics is changing and command needs to be updated
+		//Stop Everything
+		stopPneumatics = new JoystickButton (driveStickL, );
+		stopPneumatics->WhenPressed(new cmdStopPneumatics());
+	*/
 
 }
 

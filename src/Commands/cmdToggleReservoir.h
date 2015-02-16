@@ -1,13 +1,13 @@
-#ifndef cmdToggleAirTanks_H
-#define cmdToggleAirTanks_H
+#ifndef cmdToggleReservoir_H
+#define cmdToggleReservoir_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class cmdToggleAirTanks: public CommandBase
+class cmdToggleReservoir: public CommandBase
 {
 public:
-	cmdToggleAirTanks();
+	cmdToggleReservoir();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

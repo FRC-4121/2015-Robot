@@ -33,6 +33,11 @@ void ReservoirChange::FillNeitherReservoir()
 	compressorSolenoidState=0;
 }
 
+int ReservoirChange::GetCompressorSolenoidState()
+{
+	return compressorSolenoidState;
+}
+
 void ReservoirChange::UseFirstReservoir()
 {
 	reservoirSol->Set(reservoirSol->kReverse);
@@ -47,4 +52,8 @@ void ReservoirChange::UseNeitherReservoir()
 {
 	reservoirSol->Set(reservoirSol->kOff);
 	reservoirSolenoidState=0;
+}
+int ReservoirChange::GetReservoirSolenoidState()
+{
+	return reservoirSolenoidState;
 }
