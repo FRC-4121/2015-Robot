@@ -35,8 +35,8 @@ private:
 		chooser= new SendableChooser();
 		chooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
 		chooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
-//		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
-//		chooser->AddObject("stack all totees", new AutoGrabAllTotes());
+		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
+		chooser->AddObject("stack all totees", new AutoGrabAllTotes());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 
