@@ -1,9 +1,10 @@
 #include <Subsystems/Lifter.h>
 #include "../Robotmap.h"
 #include "DoubleSolenoid.h"
-Lifter::Lifter() : Subsystem("LoaderSubsystem") {
+Lifter::Lifter() : Subsystem("LifterSubsystem") {
 	//this is the constructor
-
+	lifterSolenoidState=0;
+	gripperSolenoidState=0;
 	lifterSol = new DoubleSolenoid(1, 0);
 	gripperSol= new DoubleSolenoid(2, 3);
 	fullyRetractedSwitch= new DigitalInput(LOADER_FULLY_RETRACT_REED_SWITCH_I);

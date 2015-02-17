@@ -6,8 +6,7 @@
 
 class AutoGrabTrashStackTurnLZone: public CommandGroup
 {
-private:
-	DigitalInput *fullyRetracted;
+
 public:
 	AutoGrabTrashStackTurnLZone();
 };

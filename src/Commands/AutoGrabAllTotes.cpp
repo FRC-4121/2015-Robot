@@ -1,4 +1,4 @@
-#include <Commands/waitUntilFullyRetracted.h>
+#include "Commands/waitUntilFullyRetracted.h"
 #include "AutoGrabAllTotes.h"
 #include "Commands/AutoForward.h"
 #include "Commands/RetractLoaderCommand.h"
@@ -15,9 +15,9 @@ AutoGrabAllTotes::AutoGrabAllTotes()
 	//need to do limit switch to know when loader fully retracted before driving forward to next tote
 
 
-	AddSequential(new cmdRetractGripperCommand());//clamp onto 1st tote or bin
+	AddSequential(new cmdRetractGripperCommand());//switch solenoid to start clamping onto 1st tote or bin
 
-	AddSequential(new Delay(1));
+	AddSequential(new Delay(1));//wait until fully retracted
 
 	AddSequential(new cmdRetractLoaderCommand());//lift the tote or bin
 
@@ -26,14 +26,13 @@ AutoGrabAllTotes::AutoGrabAllTotes()
 	AddSequential(new AutoForward(89));//drive to the next tote
 
 	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
-
 	AddSequential(new cmdExtendGripperCommand());//drop tote onto tote
 
-AddSequential(new Delay(3));
+	AddSequential(new Delay(3)); //wait until the loader is fully dropped
 
-	AddSequential(new cmdRetractGripperCommand());//clamp on to 2nd tote base
+	AddSequential(new cmdRetractGripperCommand());//switch solenoid to start clamping on to 2nd tote base
 
-	AddSequential(new Delay(1));
+	AddSequential(new Delay(1));//wait until fully retracted
 
 	AddSequential(new cmdRetractLoaderCommand());//lift the tote
 
@@ -42,15 +41,14 @@ AddSequential(new Delay(3));
 	AddSequential(new AutoForward(89));//drive to the next tote
 
 	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
-
 	AddSequential(new cmdExtendGripperCommand());//drop tote onto tote
 
 
+	AddSequential(new Delay(3)); //wait until the loader is fully dropped
 
+	AddSequential(new cmdRetractGripperCommand());//switch solenoid to start clamping on to 3rd tote base
 
-	AddSequential(new cmdRetractGripperCommand());//clamp on to 3rd tote base
-
-	AddSequential(new Delay(1));
+	AddSequential(new Delay(1));//wait until fully retracted
 
 	AddParallel(new cmdRetractLoaderCommand());//lift the tote as you turn 90 degrees to the right
 	AddSequential(new AutoTurn(0,0,0.5,80));

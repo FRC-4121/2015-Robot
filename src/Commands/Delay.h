@@ -8,7 +8,7 @@ class Delay: public CommandBase
 {
 private:
 	float delayTime;
-	Timer *timer;
+		Timer *timer;
 public:
 	Delay(float time);
 	void Initialize();

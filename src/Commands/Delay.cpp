@@ -2,10 +2,11 @@
 
 Delay::Delay(float time)
 {
+
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	delayTime=time;
-	timer->Reset();
+	timer= new Timer();
 }
 
 // Called just before this Command runs the first time
@@ -26,11 +27,8 @@ bool Delay::IsFinished()
 {
 	if(delayTime<=timer->Get())
 	{
-		timer->Stop();
-		timer->Reset();
 		return true;
 	}
-
 
 	else
 	{
@@ -41,7 +39,8 @@ bool Delay::IsFinished()
 // Called once after isFinished returns true
 void Delay::End()
 {
-
+	timer->Stop();
+	timer->Reset();
 }
 
 // Called when another command which requires one or more of the same

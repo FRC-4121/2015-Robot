@@ -6,8 +6,6 @@
 
 class AutoGrabAllTotes: public CommandGroup
 {
-private:
-	DigitalInput *loaderFullyRetracted;
 
 public:
 	AutoGrabAllTotes();
