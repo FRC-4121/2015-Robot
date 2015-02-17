@@ -25,7 +25,7 @@ AutoGrabAllTotes::AutoGrabAllTotes()
 
 	AddSequential(new AutoForward(89));//drive to the next tote
 
-	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
+	AddSequential(new cmdExtendLoaderCommand()); //drop loader to the ground
 	AddSequential(new cmdExtendGripperCommand());//drop tote onto tote
 
 	AddSequential(new Delay(3)); //wait until the loader is fully dropped
@@ -40,7 +40,7 @@ AutoGrabAllTotes::AutoGrabAllTotes()
 
 	AddSequential(new AutoForward(89));//drive to the next tote
 
-	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
+	AddSequential(new cmdExtendLoaderCommand()); //drop loader to the ground
 	AddSequential(new cmdExtendGripperCommand());//drop tote onto tote
 
 
@@ -50,7 +50,7 @@ AutoGrabAllTotes::AutoGrabAllTotes()
 
 	AddSequential(new Delay(1));//wait until fully retracted
 
-	AddParallel(new cmdRetractLoaderCommand());//lift the tote as you turn 90 degrees to the right
+	AddSequential(new cmdRetractLoaderCommand());//lift the tote as you turn 90 degrees to the right
 	AddSequential(new AutoTurn(0,0,0.5,80));
 
 	AddSequential(new AutoForward(132));//drive the 9'6" forward over ramp into AutoZone and VICTORY!!!!!!!!!!!!!!
