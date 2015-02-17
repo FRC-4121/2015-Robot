@@ -23,11 +23,11 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		stopPneumaticsCommand= new cmdStopPneumatics();
+//		stopPneumaticsCommand= new cmdStopPneumatics();
 
-		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
-		CommandBase::oi->getGyro()->InitGyro();
-		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
+//		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
+//		CommandBase::oi->getGyro()->InitGyro();
+//		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
 
 
 		//autonomousCommand= new AutoGrabTurnRZone();
@@ -35,8 +35,8 @@ private:
 		chooser= new SendableChooser();
 		chooser->AddDefault("Grab Tote Spin Right Move to Auto Zone", new AutoGrabTurnRZone());
 		chooser->AddObject("Grab Tote Spin Left Move to Auto Zone", new AutoGrabTurnLZone());
-		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
-		chooser->AddObject("stack all totees", new AutoGrabAllTotes());
+//		chooser->AddObject("Grab Trash Stack Spin Left Move to Auto Zone", new AutoGrabTrashStackTurnLZone());
+//		chooser->AddObject("stack all totees", new AutoGrabAllTotes());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 
