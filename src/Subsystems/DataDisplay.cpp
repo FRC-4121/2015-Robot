@@ -60,5 +60,6 @@ void  DataDisplay::DisplayAll()
 	SmartDashboard::PutNumber("Front Right Encoder Speed:", CommandBase::oi->getFrontRightEncoder()->GetRate());
 	SmartDashboard::PutNumber("Back Left Encoder Speed:", CommandBase::oi->getBackLeftEncoder()->GetRate());
 	SmartDashboard::PutNumber("Back Right Encoder Speed:", CommandBase::oi->getBackRightEncoder()->GetRate());
+	SmartDashboard::PutBoolean("Limit Switch: ", CommandBase::toteLifter->ReadFullyRetractedSwitch());
 
 }

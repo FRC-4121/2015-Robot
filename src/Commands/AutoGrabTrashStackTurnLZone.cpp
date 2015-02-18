@@ -25,7 +25,7 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 
 	AddSequential(new AutoForward(24));//drives forward with bin till overtop the tote
 
-	AddParallel(new cmdExtendLoaderCommand()); //drop loader to the ground
+	AddSequential(new cmdExtendLoaderCommand()); //drop loader to the ground
 	AddSequential(new cmdExtendGripperCommand());//drop bin onto tote
 
 	AddSequential(new Delay(3));//wait until loader fully dropped
@@ -34,7 +34,7 @@ AutoGrabTrashStackTurnLZone::AutoGrabTrashStackTurnLZone()
 
 	AddSequential(new Delay(1));//wait until fully clamped
 
-	AddParallel(new cmdRetractLoaderCommand());//lift the tote while turning left
+	AddSequential(new cmdRetractLoaderCommand());//lift the tote while turning left
 	AddSequential(new AutoTurn(0,0,-0.5, -80));
 
 	AddSequential(new AutoForward(132));//drive to auto zone and VICTORY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

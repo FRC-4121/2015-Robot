@@ -29,6 +29,8 @@ private:
 //		CommandBase::oi->getGyro()->InitGyro();
 //		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
 
+		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
+		CommandBase::oi->getGyro()->InitGyro();
 
 		//autonomousCommand= new AutoGrabTurnRZone();
 
@@ -50,8 +52,6 @@ private:
 	void AutonomousInit()
 	{
 
-		CommandBase::oi->getGyro()->SetSensitivity(.007);//.0125);
-		CommandBase::oi->getGyro()->InitGyro();
 		CommandBase::oi->getGyro()->Reset(); // Resets the gyro's heading
 		autonomousCommand=(Command *)chooser-> GetSelected();
 
