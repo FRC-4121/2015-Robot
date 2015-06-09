@@ -3,6 +3,7 @@
 #include "Subsystems/Chassis.h"
 #include "Commands/Scheduler.h"
 #include "Subsystems/DataDisplay.h"
+#include "Subsystems/LoaderSubsystem.h"
 //#include "Subsystems/AxisCamera.h"
 
 
@@ -12,6 +13,7 @@ OI* CommandBase::oi = NULL;
 Chassis* CommandBase::mecanumChassis = NULL;
 DataDisplay* CommandBase::driverDisplay = NULL;
 Lifter* CommandBase::toteLifter = NULL;
+LoaderSubsystem* CommandBase::loaderSubsystem= NULL;
 SendableChooser* CommandBase::chooser= NULL;
 
 CommandBase::CommandBase(char const *name) :
@@ -34,5 +36,6 @@ void CommandBase::init()
 	mecanumChassis = new Chassis();
 	driverDisplay = new DataDisplay();
 	toteLifter = new Lifter();
+	loaderSubsystem = new LoaderSubsystem();
 
 }

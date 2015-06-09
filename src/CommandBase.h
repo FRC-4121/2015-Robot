@@ -8,6 +8,7 @@
 #include "Subsystems/Chassis.h"
 #include "OI.h"
 #include "Subsystems/DataDisplay.h"
+#include <Subsystems/LoaderSubsystem.h>
 #include "WPILib.h"
 
 /**
@@ -28,6 +29,7 @@ public:
 	static DataDisplay *driverDisplay;
 	static AxisCamera *cameraDisplay;
 	static Lifter *toteLifter;
+	static LoaderSubsystem *loaderSubsystem;
 	static SendableChooser *chooser;
 };
 

@@ -27,6 +27,7 @@
 
 typedef enum
 {
+	FEEDERMOTOR,
 	FRONT_LEFT_TALON = 0,
 	FRONT_RIGHT_TALON,
 	REAR_LEFT_TALON,
@@ -55,10 +56,10 @@ typedef enum{
 	//the name of each type should follow this format
 //	Joystick(R/L)_ButtonName_fButtonFunction - The f is NOT a typo
 	R_TRIGGER=1,//button 1
-	R_THUMB_BUTTON_DOWN_fLOWER_TOTE, // Button Number 2
+	R_THUMB_BUTTON_DOWN, // Button Number 2
 	R_THUMB_BUTTON_UP,//button 3
-	R_THUMB_BUTTON_LEFT,//button 4
-	R_THUMB_BUTTON_RIGHT, // Button Number 5
+	R_THUMB_BUTTON_LEFT_fREVERSE_FEEDER,//button 4
+	R_THUMB_BUTTON_RIGHT_fFORWARD_FEEDER, // Button Number 5
 	R_LEFT_SIDE_UP_fRESET_GYRO,//button 6
 	R_LEFT_SIDE_DOWN,//button 7
 	R_FRONT_SIDE_LEFT,// 8

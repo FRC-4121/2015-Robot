@@ -80,9 +80,14 @@ OI::OI()
 	gyroReset= new JoystickButton(driveStickR, R_LEFT_SIDE_UP_fRESET_GYRO);
 	gyroReset->WhenPressed(new cmdResetGyro());
 
-	//Lower Tote (Lowers Lifter and Extends Gripper via Limit Switch)
-//	toteLower = new JoystickButton(driveStickR, R_THUMB_BUTTON_DOWN_fLOWER_TOTE);
-//	toteLower->WhenPressed(new cmdLowerToteCommand(3))
+	//Load Totes (Feeder)
+	feederForward= newJoystickButton(driveStickR, R_THUMB_BUTTON_RIGHT_fFORWARD_FEEDER);
+	feederForward->WhenPressed(new ActivateLoader());
+	feederReverse= newJoystickButton(driveStickR, R_THUMB_BUTTON_LEFT_fREVERSE_FEEDER);
+	feederReverse->WhenPressed(new DeactivateLoader());
+
+
+
 
 }
 

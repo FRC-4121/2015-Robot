@@ -23,6 +23,7 @@ public:
 	JoystickButton *gripperSolenoidExtend, *gripperSolenoidRetract, *xbox_gripperSolenoidExtend, *xbox_gripperSolenoidRetract;
 	JoystickButton *stopPneumatics;
 	JoystickButton *gyroReset, *xbox_gyroReset;
+	JoystickButton *feederForward, *feederReverse;
 //	JoystickButton *toteLower;
 
 	//Left Joystick
