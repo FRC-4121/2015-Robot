@@ -1,11 +1,14 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <Subsystems/Lifter.h>
 #include <string>
 #include "Commands/Command.h"
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/Chassis.h"
 #include "OI.h"
+#include "Subsystems/DataDisplay.h"
+#include <Subsystems/LoaderSubsystem.h>
 #include "WPILib.h"
 
 /**
@@ -22,7 +25,12 @@ public:
 	// Create a single static instance of all of your subsystems
 	static ExampleSubsystem *examplesubsystem;
 	static OI *oi;
-	static Chassis *chassis;
+	static Chassis *mecanumChassis;
+	static DataDisplay *driverDisplay;
+	static AxisCamera *cameraDisplay;
+	static Lifter *toteLifter;
+	static LoaderSubsystem *loaderSubsystem;
+	static SendableChooser *chooser;
 };
 
 #endif

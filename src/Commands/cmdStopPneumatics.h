@@ -1,13 +1,13 @@
-#ifndef DriveWithJoysticks_H
-#define DriveWithJoysticks_H
+#ifndef cmdStopEverything_H
+#define cmdStopEverything_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class DriveWithJoysticks: public CommandBase
+class cmdStopPneumatics: public CommandBase
 {
 public:
-	DriveWithJoysticks();
+	cmdStopPneumatics();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
