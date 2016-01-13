@@ -16,7 +16,7 @@ AutoGrabTurnRZone::AutoGrabTurnRZone()
 	AddSequential(new AutoTurn(0,0,0.5,80));//the direction it rotates depends on where we start
 										//(depends on which code is commented out in the command)
 
-	AddSequential(new AutoForward(124));//drive the 9'6" forward over ramp
+	AddSequential(new AutoForward(132));//drive the 9'6" forward over ramp
 
 	//Unsure if we need to drop tote into the zone for points or if we can hold it for points
 	/*
